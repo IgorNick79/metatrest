@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="373" height="264" viewBox="0 0 373 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_0_132" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="373" height="264">
+<rect id="Rectangle 1" width="373" height="264" fill="#03172E"/>
+</mask>
+<g mask="url(#mask0_0_132)">
+<g id="Union">
+<path d="M262.253 209.832L187.183 307.187L112.229 210.104V187.725L187.158 276.879L262.253 187.725V209.832Z" fill="#1F245B"/>
+<path d="M106.957 181.348V287.215H60.5888V126.033L106.957 181.348Z" fill="#1F245B"/>
+<path d="M313.895 287.215H267.526V181.011L313.895 125.931V287.215Z" fill="#1F245B"/>
+<path d="M55.3299 206.509L15.2292 264.37H0.289412L55.3299 185.138V206.509Z" fill="#1F245B"/>
+<path d="M373.367 264.37H358.118L319.218 206.509V185.138L373.367 264.37Z" fill="#1F245B"/>
+<path d="M313.895 111.922L187.235 260.735L60.5888 112.231V55.4308L187.235 211.683L313.895 55.0683V111.922Z" fill="#1F245B"/>
+<path d="M234.276 142.191L226.276 151.737L187.235 90.7707L148.441 151.466L140.299 141.764L187.235 69.491L234.276 142.191Z" fill="#1F245B"/>
+<path d="M259.669 110.614L239.69 134.999L186.86 51.1875L134.095 134.352L115.034 111.623L187.662 0L259.669 110.614Z" fill="#1F245B"/>
+</g>
+</g>
+</g>
+</svg>

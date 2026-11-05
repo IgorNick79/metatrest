@@ -1,0 +1,20 @@
+/* Typography tokens from the UI Kit Mobile mode. Component layouts are pending. */
+@media (width < 768px) {
+  :root {
+    --size-display: 32px;
+    --size-body: 16px;
+    --size-ui: 16px;
+    --size-button: 14px;
+    --size-button-sm: 14px;
+    --size-button-lg: 14px;
+    --size-metric: 28px;
+    --size-caps: 11px;
+    --size-section: 24px;
+    --size-section-link: 12px;
+    --size-card: 22px;
+    --size-tag: 14px;
+    --size-service-name: 20px;
+    --size-service-index: 18px;
+    --size-service-preview: 64px;
+  }
+}
