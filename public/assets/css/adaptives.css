@@ -1,0 +1,474 @@
+/* Desktop reference modes. Intermediate widths retain the nearest smaller layout. */
+@media (width < 1760px) {
+  :root {
+    --header-height: 80px;
+    --logo-height: 28px;
+    --logo-width: 139px;
+    --pdf-width: 30px;
+    --pdf-height: 12px;
+    --button-small-icon: 10px;
+    --project-meta-icon: 16px;
+    --header-gap: 32px;
+    --header-action-gap: 24px;
+    --nav-gap: 24px;
+    --photo-width: calc(100% + 5px);
+    --hero-overlap: 36px;
+    --photo-shift: 80px;
+    --glass-blur: 50px;
+    --size-ui: 16px;
+    --size-button-sm: 14px;
+    --size-button-lg: 16px;
+    --panel-pad: 32px;
+    --panel-gap: 20px;
+    --metric-gap: 8px;
+    --hero-primary-width: 286px;
+    --hero-download-width: 283px;
+    --size-display: 52px;
+    --size-body: 16px;
+    --size-metric: 36px;
+    --size-caps: 11px;
+  }
+}
+
+@media (width < 1440px) {
+  :root {
+    --inset: 28px;
+    --hero-panel-inset: 32px;
+    --header-height: 64px;
+    --logo-height: 20px;
+    --logo-width: 111px;
+    --pdf-width: 24px;
+    --button-small-height: 24px;
+    --button-small-padding: 12px;
+    --button-small-icon: 8px;
+    --button-icon-size: 12px;
+    --project-meta-icon: 12px;
+    --header-gap: 24px;
+    --header-action-gap: 32px;
+    --nav-gap: 16px;
+    --panel-offset: 48px;
+    --hero-overlap: 33px;
+    --photo-shift: 67px;
+    --glass-blur: 40px;
+    --size-ui: 12px;
+    --size-button: 12px;
+    --size-button-sm: 12px;
+    --size-button-lg: 14px;
+    --panel-pad: 24px;
+    --panel-gap: 16px;
+    --hero-button-size: 36px;
+    --hero-primary-width: 229px;
+    --hero-download-width: 232px;
+    --size-display: 40px;
+    --size-body: 14px;
+    --size-metric: 28px;
+    --size-caps: 10px;
+    --photo-width: calc(100% + 12px);
+  }
+  .hero-actions .button { --button-padding: 16px; }
+  .hero-actions .button-outline { width: var(--hero-download-width); }
+  .header-nav li { gap: 4px; }
+}
+
+
+/* Build types and services */
+@media (width < 1760px) {
+  :root {
+    --size-section: 28px;
+    --size-section-link: 12px;
+    --size-card: 28px;
+    --size-tag: 14px;
+    --size-service-name: 24px;
+    --size-service-index: 20px;
+    --size-service-preview: 96px;
+    --section-title-height: 200px;
+    --section-title-bottom: 20px;
+    --section-link-icon: 12px;
+    --section-gap: 24px;
+    --build-gap: 20px;
+    --build-bottom: 24px;
+    --build-card-width: 605px;
+    --build-card-height: 272px;
+    --build-photo-width: 230px;
+    --build-pad-x: 20px;
+    --build-pad-y: 24px;
+    --build-footer: 52px;
+    --build-tag-height: 20px;
+    --build-arrow: 12px;
+    --services-height: 704px;
+    --service-gap: 20px;
+    --service-icon: 20px;
+    --service-right: 28px;
+    --service-preview-top: 24px;
+    --service-preview-dot: 10px;
+  }
+}
+
+@media (width < 1440px) {
+  :root {
+    --size-section: 20px;
+    --size-section-link: 9px;
+    --size-card: 22px;
+    --size-tag: 12px;
+    --size-service-name: 18px;
+    --size-service-index: 16px;
+    --size-service-preview: 80px;
+    --section-inset: 28px;
+    --section-title-height: 160px;
+    --section-title-bottom: 16px;
+    --section-gap: 20px;
+    --build-gap: 16px;
+    --build-bottom: 20px;
+    --build-card-width: 484px;
+    --build-card-height: 200px;
+    --build-photo-width: 184px;
+    --build-pad-x: 16px;
+    --build-pad-y: 20px;
+    --build-footer: 44px;
+    --build-tag-height: 16px;
+    --build-scrollbar: 4px;
+    --build-scrollbar-inset: 0px;
+    --services-height: 600px;
+    --service-gap: 16px;
+    --service-icon: 16px;
+    --service-right: 22px;
+    --service-preview-top: 21px;
+    --service-preview-dot: 8px;
+    --service-preview-gap: 4px;
+  }
+
+}
+
+
+/* Projects and partners */
+@media (width < 1760px) {
+  :root {
+    --size-project: 40px;
+    --size-caption: 14px;
+    --project-height: 560px;
+    --project-top: 110px;
+    --project-bottom: 64px;
+    --project-year-width: 69px;
+    --project-year-line: 16px;
+    --project-year-gap: 8px;
+    --project-year-top: 20px;
+    --project-title-end: 48px;
+    --project-title-shift: -3px;
+    --project-caption-y: 12px;
+    --project-arrow-width: 60px;
+    --partner-height: 504px;
+    --partner-width: 117px;
+    --partner-logo-height: 32px;
+    --partner-pad-x: 24px;
+    --partner-pad-y: 24px;
+    --partner-gap: 48px;
+    --partner-row-gap: 48px;
+    --partner-pattern-height: 933.333px;
+    --partner-pattern-clip: 490px;
+  }
+}
+
+@media (width < 1440px) {
+  :root {
+    --size-project: 32px;
+    --size-caption: 12px;
+    --project-height: 448px;
+    --project-top: 88px;
+    --project-bottom: 56px;
+    --project-year-width: 53px;
+    --project-year-line: 12px;
+    --project-year-gap: 8px;
+    --project-year-top: 16px;
+    --project-title-end: 40px;
+    --project-title-shift: -2px;
+    --project-arrow-width: 52px;
+    --project-arrow-shift: 0px;
+    --partner-height: 400px;
+    --partner-width: 85px;
+    --partner-logo-height: 24px;
+    --partner-pad-x: 20px;
+    --partner-pad-y: 20px;
+    --partner-gap: 32px;
+    --partner-row-gap: 38px;
+    --partner-pattern-height: 746.667px;
+    --partner-pattern-clip: 392px;
+  }
+}
+
+/* About and Footer */
+@media (width < 1760px) {
+  :root {
+    --size-lead: 48px;
+    --size-body-medium: 16px;
+    --size-body-small: 14px;
+    --size-button-md: 15px;
+    --size-metric-main: 48px;
+    --about-height: 432px;
+    --about-pad-y: 40px;
+    --about-pad-right: 56px;
+    --about-copy-gap: 24px;
+    --about-stat-pad: 24px;
+    --about-cta-height: 40px;
+    --about-cta-pad: 20px;
+    --about-cta-gap: 4px;
+    --footer-height: 648px;
+    --footer-top-height: 344px;
+    --footer-nav-top: 96px;
+    --footer-row-gap: 8px;
+    --footer-item-gap: 12px;
+    --footer-index-width: 38px;
+    --footer-up-width: 92px;
+    --footer-up-height: 90px;
+    --footer-bottom-top: 64px;
+    --footer-social-width: 250px;
+    --footer-legal-offset: 96px;
+    --footer-mark-x: 56px;
+    --footer-mark-width: 311px;
+    --footer-mark-height: 220px;
+  }
+}
+
+@media (width < 1440px) {
+  :root {
+    --size-lead: 40px;
+    --size-body-medium: 12px;
+    --size-body-small: 12px;
+    --size-button-md: 14px;
+    --size-metric-main: 36px;
+    --about-height: 336px;
+    --about-pad-y: 24px;
+    --about-pad-right: 28px;
+    --about-copy-gap: 20px;
+    --about-stat-pad: 24px;
+    --about-cta-height: 32px;
+    --about-cta-pad: 16px;
+    --about-cta-gap: 2px;
+    --footer-height: 520px;
+    --footer-top-height: 272px;
+    --footer-nav-top: 64px;
+    --footer-row-gap: 8px;
+    --footer-item-gap: 12px;
+    --footer-index-width: 25px;
+    --footer-up-width: 72px;
+    --footer-up-height: 72px;
+    --footer-bottom-top: 48px;
+    --footer-social-width: 200px;
+    --footer-legal-offset: 80px;
+    --footer-mark-x: 44px;
+    --footer-mark-width: 249px;
+    --footer-mark-height: 176px;
+  }
+}
+
+@media (width < 1760px) {
+  .build-section { --build-thumb-width: 1157px; --build-thumb-height: 5px; }
+}
+@media (width < 1440px) {
+  .build-section { --build-thumb-width: 925px; --build-thumb-height: 4px; }
+}
+
+/* Intermediate desktop sizes. Values between the Figma reference widths are interpolated. */
+@media (1760px <= width < 1920px) {
+  :root {
+    --size-display: clamp(58px, calc(3.75vw - 8px), 64px);
+    --size-body: clamp(18px, calc(1.25vw - 4px), 20px);
+    --size-metric: clamp(40px, calc(2.5vw - 4px), 44px);
+    --size-section: clamp(34px, calc(3.75vw - 32px), 40px);
+    --size-lead: clamp(54px, calc(3.75vw - 12px), 60px);
+    --panel-pad: clamp(36px, calc(2.5vw - 8px), 40px);
+    --hero-panel-inset: 32px;
+    --panel-gap: 20px;
+  }
+}
+
+@media (1440px <= width < 1600px) {
+  :root {
+    --size-display: clamp(46px, calc(3.75vw - 8px), 52px);
+    --hero-panel-inset: 32px;
+    --panel-gap: 16px;
+    --hero-primary-width: 260px;
+    --hero-download-width: 260px;
+  }
+  .hero-actions .button { --button-padding: 16px; }
+}
+
+@media (1024px < width < 1280px) {
+  :root {
+    --header-height: 104px;
+    --header-gap: 20px;
+    --nav-gap: 20px;
+    --hero-panel-inset: 28px;
+    --panel-offset: 40px;
+  }
+  .header-inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: 52px 51px;
+    column-gap: 24px;
+    row-gap: 0;
+  }
+  .header-inner nav { grid-column: 1 / -1; grid-row: 2; }
+  .header-nav { justify-content: space-between; }
+  .site-header .button { grid-column: 3; grid-row: 1; margin-left: 0; }
+  .header-contacts { justify-content: flex-end; }
+  .hero-screen { grid-template-columns: 40% minmax(0, 1fr); }
+  .hero-actions .button { min-width: 0; }
+  .hero-actions .button-primary { width: var(--hero-primary-width); }
+  .hero-actions .button-outline { width: var(--hero-download-width); }
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(384px, 1fr));
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .about-grid {
+    --about-media-width: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-copy { min-height: var(--about-height); }
+  .about-stats {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+  .about-stats li { gap: 16px; }
+  .about-stats li:nth-child(2) {
+    border-block: 0;
+    border-inline: var(--hairline) solid var(--line-overlay);
+  }
+  .footer-bottom {
+    grid-template-columns: var(--footer-social-width) minmax(0, 1fr);
+    padding-inline: var(--section-inset);
+    padding-bottom: var(--footer-mark-height);
+  }
+  .footer-socials { grid-column: 1; }
+  /* Keep long navigation labels outside the separate back-to-top column. */
+  .home-page .footer-nav {
+    padding-right: calc(var(--section-inset) + var(--footer-up-width));
+  }
+}
+/* Catalogue reference modes */
+@media (width < 1760px) {
+  .catalog-page {
+    --size-page: 128px;
+    --catalog-heading-height: 416px;
+    --catalog-heading-bottom: 25px;
+    --catalog-filter-height: 52px;
+    --catalog-filter-pad: 40px;
+    --catalog-list-top: 40px;
+    --catalog-project-height: 540px;
+    --catalog-info-width: 649px;
+    --catalog-project-gap: 16px;
+    --catalog-project-content-width: 481px;
+    --request-field-pad-top: 10px;
+    --request-column-gap: 32px;
+    --request-field-pad-bottom: 8px;
+    --catalog-photo-top: 56px;
+    --catalog-photo-height: 428px;
+    --catalog-project-top: 44px;
+    --catalog-project-bottom: 56px;
+    --catalog-project-text-gap: 32px;
+    --catalog-detail-width: 355px;
+    --catalog-meta-gap: 20px;
+    --catalog-service-height: 353px;
+    --catalog-service-pad: 32px;
+    --catalog-service-photo-height: 288px;
+    --catalog-service-title: 34px;
+    --catalog-service-text: 20px;
+    --catalog-step-size: 52px;
+    --catalog-number-offset: 10px;
+    --catalog-number-dot: 5px;
+    --catalog-number-bottom: 12px;
+    --catalog-button-width: 198px;
+    --catalog-button-size: 14px;
+    --process-height: 314px;
+    --process-pad: 32px;
+    --process-gap: 32px;
+    --process-copy-gap: 12px;
+    --process-note-height: 69px;
+    --process-body-size: 16px;
+    --request-height: 609px;
+    --request-title-size: 40px;
+    --request-text-size: 18px;
+    --request-field-size: 16px;
+    --request-label-size: 12px;
+    --request-field-height: 60px;
+    --request-top: 24px;
+    --request-group-gap: 32px;
+    --request-upload-height: 112px;
+    --request-bottom: 32px;
+    --request-intro-pad: 32px;
+    --request-intro-width: 355px;
+    --request-consent-height: 20px;
+  }
+}
+@media (width < 1440px) {
+  .catalog-page {
+    --size-page: 100px;
+    --catalog-heading-height: 336px;
+    --catalog-heading-bottom: 21px;
+    --catalog-filter-height: 40px;
+    --catalog-filter-pad: 28px;
+    --catalog-list-top: 32px;
+    --catalog-project-height: 424px;
+    --catalog-info-width: 512px;
+    --catalog-project-content-width: 400px;
+    --request-field-pad-top: 6px;
+    --request-column-gap: 28px;
+    --request-field-pad-bottom: 6px;
+    --request-checkbox-size: 16px;
+    --catalog-photo-top: 40px;
+    --catalog-photo-height: 344px;
+    --catalog-project-top: 30px;
+    --catalog-project-bottom: 40px;
+    --catalog-project-text-gap: 24px;
+    --catalog-detail-size: 14px;
+    --catalog-detail-width: 284px;
+    --catalog-meta-gap: 16px;
+    --catalog-service-height: 281px;
+    --catalog-service-pad: 24px;
+    --catalog-service-photo-height: 232px;
+    --catalog-service-title: 28px;
+    --catalog-service-text: 18px;
+    --catalog-step-size: 44px;
+    --catalog-number-offset: 8px;
+    --catalog-number-dot: 4px;
+    --catalog-number-bottom: 10px;
+    --catalog-button-height: 24px;
+    --catalog-button-width: 158px;
+    --catalog-button-size: 12px;
+    --process-height: 240px;
+    --process-pad: 24px;
+    --process-gap: 24px;
+    --process-note-height: 58px;
+    --process-body-size: 12px;
+    --request-height: 478px;
+    --request-title-size: 32px;
+    --request-text-size: 16px;
+    --request-field-size: 14px;
+    --request-label-size: 10px;
+    --request-hint-size: 13px;
+    --request-field-height: 48px;
+    --request-field-gap: 12px;
+    --request-top: 20px;
+    --request-group-gap: 24px;
+    --request-upload-height: 88px;
+    --request-bottom: 24px;
+    --request-intro-pad: 24px;
+    --request-intro-width: 284px;
+    --request-consent-height: 17px;
+  }
+}
+@media (1024px < width < 1280px) {
+  .catalog-project { grid-template-columns: minmax(0, 42%) minmax(0, 1fr); }
+  .catalog-project-content { max-width: 100%; }
+  .catalog-project-photos { gap: 12px; }
+  .catalog-service { grid-template-columns: minmax(0, 34%) minmax(0, 1fr); }
+  .catalog-service-title { grid-column: 2; grid-row: auto; padding-bottom: 0; }
+  .catalog-service-description { grid-column: 2; border-left: 0; padding-top: 12px; gap: 24px; }
+  .catalog-service-media { grid-row: span 2; }
+  .catalog-service { min-height: var(--catalog-service-height); }
+  .process-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .process-grid > li { min-height: var(--process-height); border-bottom: 1px solid var(--line); }
+  .request-section { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); }
+  .request-consent { align-items: start; }
+}

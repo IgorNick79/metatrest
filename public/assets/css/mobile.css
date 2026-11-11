@@ -1,0 +1,274 @@
+/* Legacy typography for internal pages; their mobile layouts are still pending. */
+@media (width < 768px) {
+  :root {
+    --size-display: 32px;
+    --size-body: 16px;
+    --size-ui: 16px;
+    --size-button: 14px;
+    --size-button-sm: 14px;
+    --size-button-lg: 14px;
+    --size-metric: 28px;
+    --size-caps: 11px;
+    --size-section: 24px;
+    --size-section-link: 12px;
+    --size-card: 22px;
+    --size-tag: 14px;
+    --size-service-name: 20px;
+    --size-service-index: 18px;
+    --size-service-preview: 64px;
+  }
+}
+
+/* Main page mobile composition: Figma «Главная [375]», 14329:21914.
+   The same layout reflows through 1024px; widths other than 375px are not separate Figma frames. */
+@media (width <= 1024px) {
+  .home-page {
+    --gutter: 0px;
+    --inset: 16px;
+    --section-inset: 16px;
+    --header-height: 64px;
+    --glass-blur: 40px;
+    --size-display: 32px;
+    --size-body: 16px;
+    --size-ui: 12px;
+    --size-button: 16px;
+    --size-button-lg: 16px;
+    --size-button-md: 16px;
+    --size-metric: 32px;
+    --size-caps: 11px;
+    --size-section: 22px;
+    --size-section-link: 12px;
+    --size-card: 24px;
+    --size-tag: 14px;
+    --size-service-name: 20px;
+    --size-service-index: 18px;
+    --size-service-preview: 64px;
+    --size-project: 28px;
+    --size-caption: 15px;
+    --size-lead: 40px;
+    --size-body-medium: 16px;
+    --size-body-small: 16px;
+    --size-metric-main: 32px;
+    --hero-height: 540px;
+    --hero-overlap: 128px;
+    --hero-button-size: 52px;
+    --button-icon-size: 16px;
+    --pdf-width: 36px;
+    --pdf-height: 16px;
+    --panel-gap: 16px;
+    --metric-gap: 8px;
+    --section-title-height: 116px;
+    --section-title-bottom: 12px;
+    --section-link-icon: 16px;
+    --section-gap: 16px;
+    --build-gap: 12px;
+    --build-card-width: 300px;
+    --build-card-height: 392px;
+    --build-pad-x: 20px;
+    --build-footer: 52px;
+    --build-tag-height: 24px;
+    --build-arrow: 16px;
+    --service-gap: 8px;
+    --service-icon: 16px;
+    --service-preview-top: 16px;
+    --service-preview-dot: 6px;
+    --service-preview-gap: 2px;
+    --project-height: 420px;
+    --project-top: 80px;
+    --project-bottom: 52px;
+    --project-year-width: 52px;
+    --project-year-line: 12px;
+    --project-year-gap: 8px;
+    --project-year-top: 12px;
+    --project-title-end: 16px;
+    --project-title-shift: 0px;
+    --project-caption-y: 8px;
+    --project-arrow-width: 52px;
+    --project-arrow-shift: 0px;
+    --partner-height: 360px;
+    --partner-gap: 24px;
+    --partner-row-gap: 36px;
+    --partner-width: 96px;
+    --partner-logo-height: 24px;
+    --about-height: 0px;
+    --about-pad-y: 32px;
+    --about-copy-gap: 24px;
+    --about-cta-height: 40px;
+    --about-cta-pad: 16px;
+    --about-cta-gap: 4px;
+    --footer-height: 0px;
+    --footer-up-width: 69px;
+    --footer-up-height: 72px;
+    --footer-index-width: 20px;
+    --footer-item-gap: 4px;
+    --footer-row-gap: 16px;
+  }
+
+  /* Typography: existing categories, mobile variants from the UI Kit. */
+  .home-page .display { overflow-wrap: anywhere; }
+  .home-page .label.menu { font-size: var(--size-menu); font-weight: 400; }
+  .home-page .body.menu-sub { font-size: var(--size-body); font-weight: 400; line-height: 1.1; }
+  .home-page .data.phone { font-size: var(--size-metric); line-height: 1.1; }
+  .home-page .data.metric { line-height: .9; text-transform: uppercase; }
+  .home-page .body.stat-caption { font-size: var(--size-caps); line-height: normal; letter-spacing: .06em; text-transform: uppercase; }
+
+  .home-page main [id], .home-page footer [id] { scroll-margin-top: 80px; }
+
+  /* Header and the dark, independently scrollable menu. */
+  .home-page::after { content: none; }
+  .home-page .site-header { position: fixed; z-index: 10; background: var(--glass); }
+  .home-page .header-inner { min-height: 63px; justify-content: space-between; gap: 16px; }
+  .home-page .header-contacts,
+  .home-page .header-inner > nav,
+  .home-page .header-inner > .button,
+  .home-page .header-logo-desktop { display: none; }
+  .home-page .header-logo-mobile { display: block; width: 44px; height: 31.625px; }
+  .home-page .header-menu-toggle { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding-inline: 16px; border: 1px solid var(--line-overlay); border-radius: var(--radius); }
+  .home-page .header-menu-toggle .icon { width: 16px; height: 16px; }
+  .home-page.menu-open { overflow: hidden; }
+  .home-page.menu-open .site-header { background: var(--page); backdrop-filter: none; }
+  .home-page .mobile-menu {
+    position: fixed;
+    z-index: 9;
+    inset: var(--header-height) 0 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: linear-gradient(to bottom, var(--page) 50%, var(--brand) 118.46%);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .home-page .mobile-menu-nav { padding-top: 24px; }
+  .home-page .mobile-menu-group,
+  .home-page .mobile-menu-row { border-bottom: 1px solid var(--line-subtle); }
+  .home-page .mobile-menu-group summary,
+  .home-page .mobile-menu-row { display: flex; min-height: 48px; align-items: center; justify-content: space-between; padding-inline: var(--inset); }
+  .home-page .mobile-menu-group summary { list-style: none; cursor: pointer; }
+  .home-page .mobile-menu-group summary::-webkit-details-marker { display: none; }
+  .home-page .mobile-menu-group[open] summary .icon { transform: rotate(180deg); }
+  .home-page .mobile-menu-subs { padding-bottom: 24px; }
+  .home-page .mobile-menu-subs :is(a, li > span) { display: block; padding: 12px var(--inset); }
+  .home-page .mobile-menu-actions { padding: 48px var(--inset) 24px; gap: 12px; }
+  .home-page .mobile-menu .button { width: 100%; --button-size: 52px; --button-padding: 16px; }
+  .home-page .mobile-menu .button-text { min-width: 0; gap: 12px; white-space: normal; }
+  .home-page .mobile-menu-contacts { padding: 24px var(--inset); gap: 48px; }
+  .home-page .mobile-menu-contact-lines { gap: 16px; }
+  .home-page .data.phone a { display: block; }
+  .home-page .mobile-menu-address { gap: 8px; }
+  .home-page .mobile-menu-address :is(a, p) { gap: 8px; }
+  .home-page .mobile-menu-socials li { display: flex; align-items: center; gap: 8px; }
+  .home-page .mobile-menu-socials { gap: 12px 16px; --size-caps: 12px; }
+
+  /* Hero: the panel overlaps the 540px photo by 128px, then stays in document flow. */
+  .home-page .hero-screen { display: block; min-height: 0; padding: calc(var(--hero-height) - var(--hero-overlap)) 0 0; }
+  .home-page .hero-media { height: var(--hero-height); bottom: auto; border: 0; }
+  /* The Figma crop uses a 1109.1 × 619px image. Keep that source ratio as the window widens. */
+  .home-page .hero-media img { width: 1109.1px; height: 619px; aspect-ratio: 4096 / 2286; max-width: none; top: -58px; left: min(0px, calc(50% - 430.45px)); transform: scaleX(-1); object-fit: cover; }
+  .home-page .hero-media::after { background: rgb(2 6 35 / 10%); }
+  .home-page .hero-panel { top: 0; min-height: 640px; padding: 24px 0 0; gap: 16px; border: 0; box-shadow: inset 0 1px var(--line-overlay); border-radius: 0; }
+  .home-page .hero-copy { padding-inline: var(--inset); gap: 16px; }
+  .home-page .hero-copy br { display: none; }
+  .home-page .hero-copy br.mobile-break { display: initial; }
+  .home-page .hero-actions { flex-direction: column; flex-wrap: nowrap; padding-block: 8px; gap: 12px; }
+  .home-page .hero-actions .button { width: 100%; min-width: 0; --button-padding: 16px; }
+  .home-page .hero-actions .button-text { min-width: 0; gap: 12px; white-space: normal; }
+  .home-page .hero-stats { flex-direction: column; padding: 0; border: 0; white-space: normal; }
+  .home-page .hero-stats li { min-height: 72px; padding-inline: var(--inset); flex-direction: row; align-items: center; justify-content: space-between; border-top: 1px solid var(--line-subtle); }
+  .home-page .hero-stats .label { max-width: 100px; text-align: right; }
+
+  /* A single heading/link is rearranged around each horizontal strip. */
+  .home-page :is(.build-section, .services-section, .projects-section) { display: grid; grid-template-columns: minmax(0, 1fr); padding-bottom: 0; }
+  .home-page :is(.build-section, .services-section, .projects-section) > .section-heading { display: contents; }
+  .home-page :is(.build-section, .services-section, .projects-section) .section-heading > h2 { grid-row: 1; display: flex; align-items: flex-end; min-height: var(--section-title-height); padding: 0 var(--section-inset) var(--section-title-bottom); box-shadow: inset 0 -1px var(--line); }
+  .home-page .section-link { grid-row: 3; display: flex; align-items: flex-start; min-height: 54px; margin-top: 16px; padding: 24px var(--section-inset) 12px; }
+  .home-page .section-link > span { align-items: center; }
+
+  /* Object types: retain native touch and keyboard scrolling. */
+  .home-page .build-track,
+  .home-page .build-track.has-scroll-control { grid-row: 2; min-height: 0; height: var(--build-card-height); margin-top: 16px; padding: 0 var(--section-inset); gap: var(--build-gap); scrollbar-width: none; }
+  .home-page .build-scroll { display: none; }
+  .home-page .build-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 200px minmax(0, 1fr); }
+  .home-page .build-card-media { border-right: 0; }
+  .home-page .build-card-media img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .home-page .build-card-heading { padding: 20px 20px 0; gap: 16px; }
+  .home-page .build-card-heading br { display: none; }
+  .home-page .build-card-heading h3 { min-height: 48px; }
+
+  /* Services: one shared preview is placed in the selected accordion panel by JS. */
+  .home-page .services-grid { grid-row: 2; display: block; height: auto; background: none; }
+  .home-page .services-list { display: block; }
+  .home-page .service-row { height: 72px; padding-inline: var(--inset); }
+  .home-page .service-row .service-index { flex: 0 0 24px; }
+  .home-page .service-row .service-name { min-width: 0; }
+  .home-page .service-row > .icon { margin-left: 8px; }
+  .home-page .service-row[aria-expanded="true"] { background: none; color: var(--ink); border-bottom-color: transparent; }
+  .home-page .service-row[aria-expanded="true"] .service-index { color: var(--accent); }
+  .home-page .service-detail-copy { padding: 0 var(--inset) 32px; gap: 24px; }
+  .home-page .service-detail-copy .button { --button-size: 40px; --button-padding: 16px; width: 100%; }
+  .home-page .services-media { width: 100%; height: 280px; }
+  .home-page .services-media[data-variant="06"] img { position: static; width: 100%; height: 100%; object-fit: cover; }
+  .home-page .service-preview-number { inset: 16px var(--inset) auto auto; align-items: flex-end; }
+  .home-page .service-preview-number::after { margin-bottom: 14px; }
+  .home-page .services-section .section-link { min-height: 70px; margin-top: 0; padding-top: 40px; }
+
+  /* Case cards: the two-line caption truncation is present in the mobile Figma component. */
+  .home-page .projects-grid { grid-row: 2; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 300px; overflow-x: auto; scrollbar-width: none; margin-top: 16px; gap: 12px; padding-inline: var(--inset); }
+  .home-page .project-title { padding-inline: 16px; }
+  .home-page .project-years { padding: 12px 0; }
+  .home-page .project-bottom .caption { padding: 8px 16px; }
+  .home-page .project-caption-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .home-page .project-arrow { height: 52px; }
+
+  /* Partners: staggered rows and the 28px dot grid. */
+  .home-page .partners-panel { align-items: flex-start; justify-content: flex-start; padding-block: 90px; gap: 36px; }
+  .home-page .partners-panel::before { inset: 0; height: auto; background: radial-gradient(circle at 16px 12px, var(--line) 1.5px, transparent 1.6px) 0 0 / 28px 28px; }
+  .home-page .partners-row { justify-content: flex-start; }
+  .home-page .partners-row:nth-child(2) { transform: translateX(-84px); }
+  .home-page .partner-tile { width: 144px; height: 72px; padding: 0; flex: none; }
+
+  /* About: copy, original-image slot, then three rows of figures. */
+  .home-page .about-grid { display: flex; flex-direction: column; min-height: 0; }
+  .home-page .about-copy { padding: 32px var(--inset); gap: 24px; }
+  .home-page .about-copy .button { width: 100%; }
+  .home-page .about-media { height: 280px; }
+  .home-page .about-stats { display: block; }
+  .home-page .about-stats li { height: 72px; padding: 0 var(--inset); flex-direction: row; align-items: center; gap: 16px; border-top: 1px solid var(--line-overlay); }
+  .home-page .about-stats li:nth-child(2) { border-bottom: 0; }
+  .home-page .about-stats .data { flex: none; }
+  .home-page .about-stats .stat-caption { max-width: 194px; text-align: right; }
+  .home-page .mobile-stat-sign { margin-left: 8px; color: var(--accent); }
+
+  /* Footer: reuse the desktop content in four grid rows; no duplicate footer. */
+  .home-page .site-footer { display: grid; grid-template-columns: minmax(0, 1fr) var(--footer-up-width); grid-template-rows: minmax(332px, auto) auto minmax(132px, auto) 244px; min-height: 0; }
+  .home-page .footer-top,
+  .home-page .footer-bottom,
+  .home-page .footer-contacts { display: contents; }
+  .home-page .footer-address { grid-column: 1; grid-row: 1; align-self: start; padding: 64px var(--inset) 0; gap: 16px; }
+  .home-page .footer-phones > a { display: block; white-space: nowrap; }
+  .home-page .footer-phones > span,
+  .home-page .footer-contact-separator { display: none; }
+  .home-page .footer-contact-details { display: flex; flex-direction: column; gap: 8px; }
+  .home-page .footer-contact-line { display: flex; align-items: center; gap: 8px; }
+  .home-page .footer-address .footer-contact-line { margin-inline: 0; }
+  .home-page .mobile-only { display: block; }
+  .home-page .footer-socials { grid-column: 1; grid-row: 1; align-self: end; margin: 0 var(--inset) 64px; flex-direction: row; flex-wrap: wrap; gap: 12px 16px; --size-caps: 12px; }
+  .home-page .footer-socials li { display: flex; align-items: center; gap: 8px; }
+  .home-page .footer-social-desktop-arrow { display: none; }
+  .home-page .footer-up { position: static; grid-column: 2; grid-row: 1; width: 100%; }
+  .home-page .footer-up > span:last-child { align-items: end; padding-bottom: 64px; }
+  .home-page .footer-up-icon .icon { width: 16px; height: 16px; }
+  .home-page .footer-nav { grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: minmax(200px, auto) minmax(255px, auto); padding: 48px var(--inset); gap: 40px 12px; border: 0; box-shadow: inset 0 1px var(--line-overlay), inset 0 -1px var(--line-overlay); }
+  .home-page .footer-links { min-width: 0; gap: 16px; }
+  .home-page .footer-links li { align-items: start; min-width: 0; }
+  .home-page .footer-links li > :last-child { min-width: 0; overflow-wrap: anywhere; }
+  .home-page .footer-legal { grid-column: 1 / -1; grid-row: 3; padding: 24px var(--inset) 40px; gap: 12px; }
+  .home-page .footer-copyright { display: flex; gap: 4px; }
+  .home-page .footer-copyright-sign { flex: 0 0 20px; }
+  .home-page .footer-registration { display: block; }
+  .home-page .footer-legal-separator { display: none; }
+  .home-page .footer-credit { margin-left: 24px; }
+  .home-page .footer-mark { position: static; grid-column: 1 / -1; grid-row: 4; width: calc(100% - 32px); height: 242.767px; margin-inline: 16px; object-fit: contain; object-position: center bottom; }
+}
+
+/* Below the 375px reference, reserve enough width for the unchanged 32px phone type. */
+@media (width <= 360px) {
+  .home-page { --footer-up-width: 48px; }
+}

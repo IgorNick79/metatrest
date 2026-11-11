@@ -1,18 +1,58 @@
-# OS / IDE
+# Evolution CMS: generated content and separately installed administration
+/public/assets/cache/
+/public/manager/
+/public/assets/.thumbs/
+/public/assets/backup/
+
+# Composer dependencies and authentication
+/public/vendor/
+/public/assets/vendor/
+**/vendor/
+auth.json
+
+# Local configuration and secrets
+.env
+.env.*
+/.osp/
+/public/manager/includes/config.inc.php
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Logs, temporary files, databases and local backups
+*.log
+*.tmp
+*.bak
+*.sql
+*.sql.*
+*.dump
+*.sqlite
+*.sqlite3
+/backups/
+
+# CMS uploads and import/export data; retain distribution protection files
+/public/assets/files/*
+!/public/assets/files/.htaccess
+!/public/assets/files/index.html
+/public/assets/images/*
+!/public/assets/images/.htaccess
+!/public/assets/images/index.html
+!/public/assets/images/evo-logo.png
+/public/assets/import/*
+!/public/assets/import/.htaccess
+!/public/assets/import/index.html
+/public/assets/export/*
+!/public/assets/export/.htaccess
+!/public/assets/export/index.html
+
+# Trial fonts: publication/redistribution rights have not been confirmed
+/public/assets/fonts/
+
+# OS and editor files
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
-
-# Temporary files
-*.log
-*.tmp
-*.bak
-
-# Secrets
-.env
-.env.*
-!.env.example
-
-# Local trial fonts
-/assets/fonts/
+__pycache__/
+*.pyc
