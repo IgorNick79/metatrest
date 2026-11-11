@@ -52,7 +52,7 @@ if (services) {
       panel.hidden = !open;
       item.setAttribute('aria-expanded', String(open));
       item.removeAttribute('aria-pressed');
-      item.querySelector('use').setAttribute('href', `assets/svg/sprite.svg#mobile-${open ? 'minus' : 'plus'}`);
+      item.querySelector('use').setAttribute('href', `/assets/svg/sprite.svg#mobile-${open ? 'minus' : 'plus'}`);
     }
     preview.hidden = !control;
     if (control) {
@@ -73,7 +73,7 @@ if (services) {
         item.removeAttribute('aria-expanded');
         item.setAttribute('aria-controls', 'service-preview');
         item.setAttribute('aria-pressed', String(item === desktopSelected));
-        item.querySelector('use').setAttribute('href', 'assets/svg/sprite.svg#service-plus');
+        item.querySelector('use').setAttribute('href', '/assets/svg/sprite.svg#service-plus');
         document.getElementById(`service-details-${item.dataset.service}`).hidden = true;
       }
       preview.hidden = false;
@@ -103,15 +103,16 @@ if (services) {
   syncServiceLayout();
 }
 
-// The desktop header remains shared. Only the home page has a mobile menu.
-const menu = document.querySelector('.home-page .mobile-menu');
-const menuToggle = document.querySelector('.home-page .header-menu-toggle');
+// Shared header, menu and contacts on all static frontend pages.
+const menu = document.querySelector('.frontend-page .mobile-menu');
+const menuToggle = document.querySelector('.frontend-page .header-menu-toggle');
 if (menu && menuToggle) {
   const background = [document.querySelector('main'), document.querySelector('.site-footer')];
   const header = document.querySelector('.site-header');
   // Hero and Footer remain the content sources for the repeated menu blocks.
   const actions = menu.querySelector('[data-menu-actions]');
-  for (const action of document.querySelector('.hero-actions').children) actions.append(action.cloneNode(true));
+  const heroActions = document.querySelector('.hero-actions');
+  if (heroActions) actions.replaceChildren(...[...heroActions.children].map(action => action.cloneNode(true)));
   const phones = document.querySelector('.footer-phones').cloneNode(true);
   phones.className = 'data phone';
   phones.querySelector('span').remove();
@@ -128,7 +129,7 @@ if (menu && menuToggle) {
     menu.hidden = !open;
     document.body.classList.toggle('menu-open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.querySelector('use').setAttribute('href', `assets/svg/sprite.svg#mobile-${open ? 'close' : 'menu'}`);
+    menuToggle.querySelector('use').setAttribute('href', `/assets/svg/sprite.svg#mobile-${open ? 'close' : 'menu'}`);
     for (const element of background) element.inert = open;
     if (open) menu.querySelector('summary').focus();
     else if (restoreFocus) menuToggle.focus({ preventScroll: true });
@@ -160,10 +161,10 @@ if (menu && menuToggle) {
 }
 
 // Use the original mobile arrow glyph, preserving the desktop symbols on wider screens.
-const homeArrowUses = [...document.querySelectorAll('.home-page :is(.hero-actions, .build-card-arrow, .project-arrow, .about-copy) use')]
+const homeArrowUses = [...document.querySelectorAll('.frontend-page :is(.hero-actions, .build-card-arrow, .project-arrow, .about-copy, .catalog-project-info, .catalog-service-description, .request-submit, .mobile-menu-actions) use')]
   .filter(use => use.getAttribute('href').endsWith('#arrow-link'));
 function syncHomeArrows() {
-  for (const use of homeArrowUses) use.setAttribute('href', `assets/svg/sprite.svg#${mobileLayout.matches ? 'mobile-arrow' : 'arrow-link'}`);
+  for (const use of homeArrowUses) use.setAttribute('href', `/assets/svg/sprite.svg#${mobileLayout.matches ? 'mobile-arrow' : 'arrow-link'}`);
 }
 mobileLayout.addEventListener('change', syncHomeArrows);
 syncHomeArrows();

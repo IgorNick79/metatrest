@@ -211,7 +211,6 @@
     --about-cta-height: 40px;
     --about-cta-pad: 20px;
     --about-cta-gap: 4px;
-    --footer-height: 648px;
     --footer-top-height: 344px;
     --footer-nav-top: 96px;
     --footer-row-gap: 8px;
@@ -243,7 +242,6 @@
     --about-cta-height: 32px;
     --about-cta-pad: 16px;
     --about-cta-gap: 2px;
-    --footer-height: 520px;
     --footer-top-height: 272px;
     --footer-nav-top: 64px;
     --footer-row-gap: 8px;
@@ -342,7 +340,7 @@
   }
   .footer-socials { grid-column: 1; }
   /* Keep long navigation labels outside the separate back-to-top column. */
-  .home-page .footer-nav {
+  .frontend-page .footer-nav {
     padding-right: calc(var(--section-inset) + var(--footer-up-width));
   }
 }

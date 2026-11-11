@@ -150,7 +150,7 @@ button { padding: 0; border: 0; background: none; }
   --about-cta-height: 40px;
   --about-cta-pad: 24px;
   --about-cta-gap: 4px;
-  --footer-height: 780px;
+  --footer-bottom-height: 375px;
   --footer-top-height: 404px;
   --footer-nav-top: 120px;
   --footer-row-gap: 12px;
@@ -203,6 +203,7 @@ body {
   line-height: .9;
   text-transform: uppercase;
 }
+.data.phone { font-size: var(--size-metric); line-height: 1.1; }
 
 
 .heading.section { font-size: var(--size-section); line-height: .9; text-transform: uppercase; }
@@ -656,13 +657,12 @@ a[href], button:enabled { cursor: pointer; }
 .site-footer {
   position: relative;
   isolation: isolate;
-  min-height: var(--footer-height);
   background: linear-gradient(to bottom, var(--page) 50%, var(--brand) 118.46%);
   box-shadow: inset 0 1px var(--line);
 }
 .footer-top {
   position: relative;
-  height: var(--footer-top-height);
+  min-height: var(--footer-top-height);
 }
 .footer-nav {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -686,6 +686,8 @@ a[href], button:enabled { cursor: pointer; }
 .footer-up-icon { border-bottom: var(--hairline) solid var(--line-overlay); }
 .footer-up-icon .icon { width: var(--section-link-icon); height: var(--section-link-icon); transform: rotate(180deg); }
 .footer-bottom {
+  /* Footer hugs its rows; the 375px bottom section is confirmed in all desktop frames. */
+  min-height: calc(var(--footer-bottom-height) + var(--hairline));
   grid-template-columns: calc((100% - var(--about-media-width)) / 2) var(--footer-social-width) minmax(0, 1fr);
   border-top: var(--hairline) solid var(--line-overlay);
   padding: var(--footer-bottom-top) 0 var(--about-pad-y);
@@ -745,6 +747,10 @@ a[href], button:enabled { cursor: pointer; }
 }
 .build-section { --build-thumb-width: 1388px; --build-thumb-height: 6px; }
 /* 18. Catalogue typography */
+.label.filter { font-size: var(--size-filter, var(--size-ui)); }
+.heading.process-name { font-size: var(--process-title-size, var(--size-service-name)); line-height: 1; }
+.body.process-note { font-size: var(--process-note-size, var(--size-body-small)); }
+.body.consent { font-size: var(--request-consent-size, var(--size-body-small)); font-weight: 400; line-height: 1.4; }
 .display.page { font-size: var(--size-page); line-height: .9; letter-spacing: -.04em; text-transform: uppercase; }
 .heading.service-title { font-size: var(--catalog-service-title); line-height: 1; }
 .body.service-description { font-size: var(--catalog-service-text); font-weight: 400; line-height: 1.3; }
@@ -855,7 +861,7 @@ a[href], button:enabled { cursor: pointer; }
   gap: var(--build-gap);
   padding-block: var(--catalog-photo-top);
 }
-.catalog-project-photos img { min-width: 0; height: var(--catalog-photo-height); border-radius: var(--radius); }
+.catalog-project-photos img { min-width: 0; height: var(--catalog-photo-height); border-radius: var(--catalog-photo-radius, 6px); }
 .catalog-project:first-child { --catalog-detail-size: var(--size-body-small); }
 .catalog-more {
   --button-size: var(--catalog-button-height);
@@ -906,6 +912,9 @@ a[href], button:enabled { cursor: pointer; }
 .request-field { min-width: 0; height: var(--request-field-height); justify-content: space-between; padding-block: var(--request-field-pad-top, 16px) var(--request-field-pad-bottom, 11px); border-bottom: 1px solid var(--line); }
 .request-field-wide { grid-column: 1 / -1; }
 .request-field :is(input, select) { width: 100%; min-width: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.request-select-value { width: 100%; gap: 8px; }
+.request-select-value select { appearance: none; flex: 1; }
+.request-select-value .icon { width: 16px; height: 16px; flex: none; }
 .request-field select { color: var(--muted); }
 .request-field option { color: var(--page); background: var(--ink); }
 .request-field input::placeholder { color: rgb(255 255 255 / 25%); opacity: 1; }
@@ -917,3 +926,11 @@ a[href], button:enabled { cursor: pointer; }
 .request-consent { min-height: var(--request-consent-height); gap: 8px; align-items: center; }
 .request-consent input { flex: none; width: var(--request-checkbox-size, 18px); height: var(--request-checkbox-size, 18px); margin: 0; accent-color: var(--accent); }
 .request-policy { text-decoration: underline; }
+
+/* CMS navigation: keep the current resource visible to keyboard and pointer users. */
+.header-nav a[aria-current="page"],
+.mobile-menu-row[aria-current="page"],
+.mobile-menu-group.is-current > summary {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
