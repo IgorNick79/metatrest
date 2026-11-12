@@ -8,8 +8,9 @@ backToTop.addEventListener('click', () => {
 
 const mobileLayout = matchMedia('(width <= 1024px)');
 const services = document.querySelector('[data-services]');
-if (services) {
+if (services && services.querySelector('[data-service]')) {
   const controls = [...services.querySelectorAll('[data-service]')];
+  services.querySelector('.services-list').style.setProperty('--service-count', controls.length);
   const preview = services.querySelector('.services-media');
   const previewNumber = preview.querySelector('.service-preview-number');
   let previewImage = preview.querySelector('img');
@@ -21,6 +22,13 @@ if (services) {
   async function updateImage(control) {
     const version = ++request;
     const source = control || controls[0];
+    preview.dataset.variant = source.dataset.service;
+    previewNumber.textContent = source.dataset.serviceNumber || source.dataset.service;
+    if (!source.dataset.image) {
+      if (previewImage) previewImage.remove();
+      previewImage = null;
+      return;
+    }
     const image = new Image();
     image.className = 'cover';
     image.alt = source.querySelector('.service-name').textContent;
@@ -31,10 +39,9 @@ if (services) {
       return;
     }
     if (version !== request) return;
-    previewImage.replaceWith(image);
+    if (previewImage) previewImage.replaceWith(image);
+    else preview.prepend(image);
     previewImage = image;
-    preview.dataset.variant = source.dataset.service;
-    previewNumber.textContent = source.dataset.service;
   }
 
   function showDesktopService(control) {
