@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Услуги — МетаТрест</title>
+  [!DocLister? &documents=`[*id*]` &idType=`documents` &tvList=`meta_title,meta_description,meta_robots` &tpl=`@FILE:metatrest/seo-head` !]
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/adaptives.css">
   <link rel="stylesheet" href="/assets/css/mobile.css">
@@ -13,7 +13,7 @@
 {{Header}}
   
   <main>
-<div class="catalog-heading wrap flex align-end"><h1 class="display page">[*pagetitle*]</h1></div>
+<div class="catalog-heading wrap flex align-end"><h1 class="display page">[!DocLister? &documents=`[*id*]` &idType=`documents` &tvList=`meta_title,meta_description,meta_robots` &tpl=`@FILE:metatrest/seo-h1` !]</h1></div>
 <section class="catalog-services wrap" aria-label="Список услуг">
 [!DocLister? &parents=`3` &depth=`1` &orderBy=`c.menuindex ASC,c.id ASC` &showNoPublish=`0` &display=`0` &tvList=`card_image` &prepare=`MetaTrestCardData` &tpl=`ServiceCatalogCard` !]
 </section>

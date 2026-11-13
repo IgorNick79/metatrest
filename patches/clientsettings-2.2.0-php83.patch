@@ -1,0 +1,38 @@
+--- a/public/assets/modules/clientsettings/core/src/ClientSettings.php
++++ b/public/assets/modules/clientsettings/core/src/ClientSettings.php
+@@ -117,7 +117,7 @@
+         $fields = [];
+ 
+         foreach ($tabs as $tab) {
+-            foreach (array_keys($tab['settings']) as $field) {
++            foreach (array_keys($tab['settings'] ?? []) as $field) {
+                 $postfield = 'tv' . $field;
+ 
+                 $type = $tab['settings'][$field]['type'];
+--- a/public/assets/modules/clientsettings/core/templates/editor.tpl
++++ b/public/assets/modules/clientsettings/core/templates/editor.tpl
+@@ -49,7 +49,9 @@
+                     </thead>
+                     <tbody class="sort-str">
+                         <?php $i = 0; ?>
+-                        <?php foreach ($tab['settings']??[] as $field => $value): ?>
++                        <?php $editorSettings = $tab['settings'] ?? []; ?>
++                        <?php if (!$editorSettings) { $editorSettings = ['' => ['caption' => '', 'type' => 'text', 'note' => '', 'elements' => '', 'default_text' => '']]; } ?>
++                        <?php foreach ($editorSettings as $field => $value): ?>
+                             <tr>
+                                 <td class="tableHeader">
+                                     <input class="form-control" name="struct[tabs][<?= $key ?>][settings][<?= $i ?>][field]" value="<?= htmlspecialchars($field) ?>">
+--- a/public/assets/modules/clientsettings/core/js/editor.js
++++ b/public/assets/modules/clientsettings/core/js/editor.js
+@@ -33,6 +33,11 @@
+         e.preventDefault();
+         var c = $(this).closest('tbody').children('tr').length;
+         if (c>1) $(this).closest('tr').remove();
++        else {
++            $(this).closest('tr').find('input').val('');
++            $(this).closest('tr').find('select').val('text');
++        }
++        reset_index();
+     });
+ 
+     $(document).on('click', '.remove_tab', function(e) {

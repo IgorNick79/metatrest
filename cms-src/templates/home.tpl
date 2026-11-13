@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>МетаТрест — строительная компания</title>
+  [!DocLister? &documents=`[*id*]` &idType=`documents` &tvList=`meta_title,meta_description,meta_robots` &tpl=`@FILE:metatrest/seo-head` !]
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/adaptives.css">
   <link rel="stylesheet" href="/assets/css/mobile.css">
@@ -20,7 +20,7 @@
       </div>
       <div class="hero-panel flex flex-column">
         <div class="hero-copy flex flex-column">
-          <h1 class="display hero" id="hero-title">Металлоконструкции, шпунт и монолит — <br>от КМД до сдачи объекта</h1>
+          <h1 class="display hero" id="hero-title">[!DocLister? &documents=`[*id*]` &idType=`documents` &tvList=`meta_title,meta_description,meta_robots` &tpl=`@FILE:metatrest/seo-h1` !]</h1>
           <p class="body large">Строительная компания с собственной производственной базой в Москве <br>и Санкт-Петербурге. Работаем на объектах СЗФО <br class="mobile-break">с 2020 года.</p>
           <div class="hero-actions flex flex-wrap">
             <a class="button button-primary label button-caption-lg" href="[~2~]#request-title">

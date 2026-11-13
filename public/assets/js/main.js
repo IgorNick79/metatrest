@@ -201,3 +201,50 @@ if (buildTrack && buildScroll) {
 document.querySelector('.request-form')?.addEventListener('submit', event => {
   event.preventDefault();
 });
+
+// Mouse dragging for the objects strip only; native touch/wheel scrolling stays intact.
+if (buildTrack) {
+  let drag = null;
+  let suppressClickUntil = 0;
+  buildTrack.classList.add('mouse-drag-scroll');
+  buildTrack.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse' || event.button !== 0 || buildTrack.scrollWidth <= buildTrack.clientWidth) return;
+    suppressClickUntil = 0;
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY, left: buildTrack.scrollLeft, active: false };
+  });
+  window.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    if (!(event.buttons & 1)) { finishDrag(); return; }
+    const dx = event.clientX - drag.x;
+    if (!drag.active) {
+      if (Math.abs(dx) < 7 || Math.abs(dx) < Math.abs(event.clientY - drag.y)) return;
+      drag.active = true;
+      buildTrack.setPointerCapture(drag.id);
+      buildTrack.classList.add('is-mouse-dragging');
+      const selection = getSelection();
+      if (selection?.anchorNode && buildTrack.contains(selection.anchorNode)) selection.removeAllRanges();
+    }
+    event.preventDefault();
+    buildTrack.scrollLeft = drag.left - dx;
+  }, { passive: false });
+  function finishDrag() {
+    if (!drag) return;
+    const { id, active } = drag;
+    drag = null;
+    if (active) suppressClickUntil = performance.now() + 400;
+    buildTrack.classList.remove('is-mouse-dragging');
+    if (buildTrack.hasPointerCapture(id)) buildTrack.releasePointerCapture(id);
+  }
+  window.addEventListener('pointerup', event => { if (event.pointerId === drag?.id) finishDrag(); });
+  window.addEventListener('pointercancel', event => { if (event.pointerId === drag?.id) finishDrag(); });
+  buildTrack.addEventListener('lostpointercapture', finishDrag);
+  window.addEventListener('blur', finishDrag);
+  buildTrack.addEventListener('dragstart', event => { if (drag) event.preventDefault(); });
+  buildTrack.addEventListener('click', event => {
+    if (performance.now() < suppressClickUntil) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressClickUntil = 0;
+    }
+  }, true);
+}

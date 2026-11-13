@@ -935,3 +935,10 @@ a[href], button:enabled { cursor: pointer; }
   text-decoration: underline;
   text-underline-offset: .2em;
 }
+
+@media (any-pointer: fine) {
+  #build-items.mouse-drag-scroll,
+  #build-items.mouse-drag-scroll a { cursor: grab; }
+  #build-items.is-mouse-dragging,
+  #build-items.is-mouse-dragging * { cursor: grabbing; user-select: none; }
+}
