@@ -1038,3 +1038,13 @@ a[href], button:enabled { cursor: pointer; }
 .case-related-track .project-years { width: 61px; gap: 8px; }
 .case-related-track .project-years span { height: 20px; }
 .case-related-track .project-bottom { height: 61px; }
+
+/* Home photography: zoom the image only, keeping card content stationary. */
+.home-page .project-card,
+.home-page .build-card-media { overflow: hidden; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .home-page .project-card .project-photo,
+  .home-page .build-card-media img { transition: transform 300ms ease; }
+  .home-page .project-card:hover .project-photo,
+  .home-page .build-card:hover .build-card-media img { transform: scale(1.03); }
+}
