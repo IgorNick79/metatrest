@@ -352,3 +352,53 @@
   .catalog-page .request-consent { min-height: 0; align-items: flex-start; }
   .catalog-page .request-submit .button { width: 100%; --button-size: 52px; --button-padding: 16px; }
 }
+
+/* Project case: Figma 375. Wider mobile/tablet widths reflow this composition. */
+@media (width <= 1024px) {
+  .case-page {
+    --case-title-size: 48px; --case-headline-size: 32px; --case-intro-size: 18px;
+    --case-question-size: 20px; --case-answer-size: 16px; --case-share-size: 18px;
+    --case-caption-size: 16px; --case-breadcrumb-size: 14px; --case-card-size: 28px;
+    --case-gallery-title-size: 32px; --case-meta-size: 16px; --case-meta-gap: 8px;
+    --case-gutter: 16px; --case-photo-size: 240px; --case-photo-gap: 12px;
+    --case-cover-height: auto; --case-card-height: 420px; --case-years-size: 12px; --case-tag-size: 14px;
+  }
+  .case-cover { height: auto; background: none; }
+  .case-cover-photo { position: relative; inset: auto; width: 100%; height: 540px; border: 0; }
+  .case-cover-photo img { width: 144%; height: 100%; left: -28.4%; top: 0; object-fit: cover; }
+  .case-cover-content { backdrop-filter: blur(var(--glass-blur)); position: relative; margin: -128px 0 0; padding: 24px 16px; gap: 24px; height: auto; background: linear-gradient(0deg,#081789b3,#0817897d 11%,#02062312 59%); border-top: 1px solid var(--line-overlay); }
+  .display.case-title { font-weight: 400; letter-spacing: -.04em; }
+  .case-meta { position: static; width: 100%; }
+  .case-meta .icon { width: 16px; height: 16px; margin-top: 3px; }
+  .case-breadcrumbs { min-height: 48px; }
+  .case-breadcrumbs ol { gap: 12px; }
+  .case-breadcrumbs li:last-child { display: none; }
+  .case-breadcrumbs li:nth-last-child(2) { display: none; }
+  .case-content { display: block; }
+  .case-headline { padding: 40px 16px 16px; }
+  .desktop-case-break { display: none; }
+  .case-copy { padding-top: 0; border: 0; }
+  .case-intro { padding: 0 16px 24px; }
+  .case-detail summary { padding: 20px 16px; }
+  .case-detail summary img { width: 20px; height: 20px; }
+  .case-answer { padding: 0 16px 20px; }
+  .case-tags { padding: 16px; border-bottom: 1px solid #dbdbd6; }
+  .case-share { flex-direction: column; align-items: start; gap: 16px; padding: 20px 16px 24px; min-height: 192px; border-bottom: 1px solid #dbdbd6; border-top: 0; }
+  .case-share img { width: 14px; height: 14px; }
+  .case-gallery { padding-bottom: 0; }
+  .case-gallery-title { padding: 40px 16px 18px; }
+  .case-gallery-track { padding: 24px 16px 32px; gap: 12px; }
+  .case-gallery-scroll { display: none; }
+  .case-cta { min-height: 448px; padding: 80px 16px; gap: 48px; }
+  .case-page { --case-cta-title-size: 32px; --case-cta-intro-size: 18px; }
+  .case-cta .button { width: 100%; max-width: 100%; }
+  .case-related { position: relative; padding-bottom: 70px; }
+  .case-related > .section-heading { display: block; min-height: 116px; padding: 40px 16px 18px; }
+  .case-related .section-link { padding: 0; margin: 0; min-height: 30px; display: inline-flex; position: absolute; bottom: 12px; left: 16px; }
+  .case-related-track { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 300px; gap: 12px; overflow-x: auto; scrollbar-width: none; padding: 16px 16px 0; }
+  .case-related-track .project-title { padding: 16px 24px 16px 12px; }
+  .case-related-track .project-years { padding: 12px; }
+  .case-related-track .project-arrow { width: 44px; }
+}
+
+@media (width <= 1024px) { .case-related-track .project-top { height: auto; min-height: 84px; } .case-related-track .project-years { width: 51px; } .case-related-track .project-years span { height: 12px; } }

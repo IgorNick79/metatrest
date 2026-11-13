@@ -248,3 +248,55 @@ if (buildTrack) {
     }
   }, true);
 }
+
+// Project case controls; all selectors are scoped to the detail page.
+const casePage = document.querySelector('.case-page');
+if (casePage) {
+  const openDesktopDetail = casePage.querySelector('[data-case-open-desktop]');
+  const setCaseDetailDefault = () => { if (openDesktopDetail) openDesktopDetail.open = !mobileLayout.matches; };
+  setCaseDetailDefault();
+  mobileLayout.addEventListener('change', setCaseDetailDefault);
+  const gallery = casePage.querySelector('.case-gallery-track');
+  const galleryRange = casePage.querySelector('.case-gallery-scroll input');
+  const galleryLimit = () => Math.max(0, gallery.scrollWidth - gallery.clientWidth);
+  const syncGalleryRange = () => {
+    galleryRange.value = galleryLimit() ? gallery.scrollLeft / galleryLimit() * 1000 : 0;
+    galleryRange.disabled = galleryLimit() === 0;
+    galleryRange.style.setProperty('--gallery-thumb-size', Math.min(100, gallery.clientWidth / gallery.scrollWidth * 100) + '%');
+  };
+  gallery.addEventListener('scroll', syncGalleryRange, { passive: true });
+  galleryRange.addEventListener('input', () => { gallery.scrollLeft = galleryLimit() * galleryRange.value / 1000; });
+  new ResizeObserver(syncGalleryRange).observe(gallery);
+  const lightbox = casePage.querySelector('.case-lightbox');
+  for (const photo of gallery.querySelectorAll('[data-case-photo]')) photo.addEventListener('click', event => {
+    event.preventDefault();
+    lightbox.querySelector('img').src = photo.href;
+    lightbox.querySelector('img').alt = photo.querySelector('img').alt;
+    lightbox.querySelector('p').textContent = photo.querySelector('.case-caption').textContent;
+    lightbox.showModal();
+  });
+  lightbox.querySelector('[data-case-close]').addEventListener('click', () => lightbox.close());
+  const shareURL = new URL(location.href);
+  shareURL.hash = '';
+  casePage.querySelector('[data-case-share="telegram"]').href = 'https://t.me/share/url?url=' + encodeURIComponent(shareURL.href) + '&text=' + encodeURIComponent(document.title);
+  casePage.querySelector('[data-case-share="vk"]').href = 'https://vk.com/share.php?url=' + encodeURIComponent(shareURL.href);
+  casePage.querySelector('[data-case-copy]').addEventListener('click', async () => {
+    const status = casePage.querySelector('.case-copy-status');
+    try {
+      if (navigator.clipboard && isSecureContext) await navigator.clipboard.writeText(shareURL.href);
+      else {
+        const field = document.createElement('textarea');
+        field.value = shareURL.href;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.append(field);
+        field.select();
+        const copied = document.execCommand('copy');
+        field.remove();
+        if (!copied) throw new Error('Copy unavailable');
+        casePage.querySelector('[data-case-copy]').focus({ preventScroll: true });
+      }
+      status.textContent = 'Ссылка скопирована';
+    } catch { status.textContent = 'Скопируйте адрес из строки браузера'; }
+  });
+}

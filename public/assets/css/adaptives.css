@@ -470,3 +470,53 @@
   .request-section { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); }
   .request-consent { align-items: start; }
 }
+
+/* Project case: Figma 1600 and 1280 reference modes. */
+@media (1025px <= width < 1760px) {
+  .case-page {
+
+    --case-cover-height: 752px; --case-title-size: 60px; --case-headline-size: 40px;
+    --case-intro-size: 18px; --case-question-size: 24px; --case-answer-size: 16px;
+    --case-share-size: 18px; --case-caption-size: 14px; --case-breadcrumb-size: 14px;
+    --case-card-size: 28px; --case-gallery-title-size: 28px; --case-pad-y: 48px;
+    --case-gutter: 20px; --case-right: 158px; --case-question-pad: 24px;
+    --case-meta-top: 110px; --case-meta-width: 376px; --case-meta-gap: 8px;
+    --case-intro-bottom: 40px; --case-share-height: 72px; --case-breadcrumb-height: 44px;
+    --case-photo-size: 230px; --case-photo-gap: 20px; --case-photo-bottom: 32px;
+    --case-gallery-top: 40px; --case-gallery-bottom: 24px; --case-cta-height: 376px;
+    --case-related-top: 200px; --case-related-gap: 24px; --case-card-height: 420px;
+   --case-cta-title-size: 40px; --case-cta-intro-size: 16px;  --case-tag-size: 14px;
+  }
+.case-detail summary img { width: 24px; height: 24px; }
+}
+
+@media (1025px <= width < 1440px) {
+  .case-page {
+
+    --case-cover-height: 600px; --case-title-size: 48px; --case-headline-size: 32px;
+    --case-intro-size: 16px; --case-question-size: 20px; --case-answer-size: 14px;
+    --case-share-size: 16px; --case-caption-size: 12px; --case-breadcrumb-size: 12px;
+    --case-card-size: 24px; --case-gallery-title-size: 20px; --case-pad-y: 40px;
+    --case-gutter: 16px; --case-right: 126px; --case-question-pad: 22px;
+    --case-meta-top: 88px; --case-meta-width: 320px; --case-meta-size: 14px;
+    --case-intro-bottom: 32px; --case-share-height: 64px; --case-breadcrumb-height: 41px;
+    --case-photo-size: 184px; --case-photo-gap: 16px; --case-photo-bottom: 24px;
+    --case-gallery-top: 32px; --case-gallery-bottom: 20px; --case-cta-height: 304px;
+    --case-related-top: 160px; --case-related-gap: 20px; --case-card-height: 336px;
+   --case-cta-title-size: 32px; --case-cta-intro-size: 14px;  --case-years-size: 12px; --case-tag-size: 12px;
+  }
+.case-related-track .project-title { padding: 16px 20px 12px 12px; }
+  .case-related-track .project-years { padding: 12px; }
+  .case-related-track .project-arrow { width: 44px; }
+
+
+.case-related-track .project-top { height: 76px; min-height: 76px; } .case-related-track .project-years { width: 51px; } .case-related-track .project-years span { height: 12px; }
+.case-detail summary img { width: 20px; height: 20px; }
+}
+
+@media (1025px <= width < 1280px) {
+  .case-page {
+ --case-right: 56px; --case-meta-width: 300px;
+  }
+.case-related-track { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}

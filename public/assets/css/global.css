@@ -302,13 +302,7 @@ body::after {
   background: transparent;
 }
 a[href], button:enabled { cursor: pointer; }
-.button { transition: transform 180ms ease; }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .button:hover { transform: scale(1.025); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .button { transition: none; }
-}
+.button:not(:disabled):not([aria-disabled="true"]) { cursor: pointer; }
 
 /* 9. Header */
 .site-header {
@@ -942,3 +936,105 @@ a[href], button:enabled { cursor: pointer; }
   #build-items.is-mouse-dragging,
   #build-items.is-mouse-dragging * { cursor: grabbing; user-select: none; }
 }
+
+/* 24. Project case: typography and composition */
+.case-page {
+  --case-cover-height: 900px; --case-title-size: 72px; --case-headline-size: 48px;
+  --case-intro-size: 20px; --case-question-size: 28px; --case-answer-size: 18px;
+  --case-share-size: 20px; --case-caption-size: 16px; --case-breadcrumb-size: 16px;
+  --case-card-size: 36px; --case-gallery-title-size: 40px; --case-pad-y: 56px;
+  --case-gutter: 24px; --case-right: 192px; --case-question-pad: 32px;
+  --case-meta-top: 132px; --case-meta-width: 433px; --case-meta-size: 16px;
+  --case-meta-color: rgb(255 255 255 / 60%); --case-meta-gap: 12px; --case-intro-bottom: 48px; --case-share-height: 96px;
+  --case-breadcrumb-height: 54px; --case-photo-size: 280px; --case-photo-gap: 24px;
+  --case-photo-bottom: 40px; --case-gallery-top: 48px; --case-gallery-bottom: 32px;
+  --case-cta-height: 460px; --case-related-height: 810px; --case-related-top: 240px;
+  --case-related-gap: 32px; --case-card-height: 498px;
+}
+.display.case-title { font-size: var(--case-title-size); font-weight: 500; line-height: .9; text-transform: uppercase; letter-spacing: 0; }
+.heading.case-headline-text { font-size: var(--case-headline-size); line-height: 1; text-transform: uppercase; }
+.heading.case-question { font-size: var(--case-question-size); line-height: 1; }
+.body.case-intro { font-size: var(--case-intro-size); line-height: 1.4; font-weight: 400; }
+.body.case-answer { font-size: var(--case-answer-size); line-height: 1.4; font-weight: 400; }
+.body.case-share-text { font-size: var(--case-share-size); line-height: 1.4; font-weight: 400; }
+.body.case-caption { font-size: var(--case-caption-size); line-height: 1.2; font-weight: 400; }
+.body.case-breadcrumb { font-size: var(--case-breadcrumb-size); line-height: 1.4; font-weight: 400; }
+.body.case-meta-text { font-size: var(--case-meta-size); line-height: 1.4; font-weight: 500; }
+.heading.case-gallery-title { font-size: var(--case-gallery-title-size); line-height: .9; text-transform: uppercase; }
+.heading.case-card { font-size: var(--case-card-size); line-height: .9; }
+.case-cover { position: relative; height: var(--case-cover-height); border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 85% -20%, #194eb466, transparent 60%); }
+.case-cover-photo { position: absolute; inset: 0 50% 0 0; overflow: hidden; border: 1px solid var(--line-overlay); }
+.case-cover-photo img { position: absolute; width: 101.83%; height: 105%; max-width: none; top: -2.5%; left: 0; }
+.case-cover-content { margin-left: 50%; height: 100%; display: flex; flex-direction: column; justify-content: end; padding: 16px var(--case-right) 20px var(--case-gutter); }
+.case-title { overflow-wrap: anywhere; hyphens: manual; }
+.case-meta { position: absolute; top: var(--case-meta-top); right: var(--section-inset); width: var(--case-meta-width); color: var(--case-meta-color); border-top: 1px solid var(--line); }
+.case-meta li { align-items: start; gap: var(--case-meta-gap); border-bottom: 1px solid var(--line); padding-block: var(--case-meta-gap); }
+.case-meta .icon { width: var(--project-meta-icon); height: var(--project-meta-icon); margin-top: 2px; }
+.case-breadcrumbs { min-height: var(--case-breadcrumb-height); padding: 0 var(--section-inset); display: flex; align-items: center; }
+.case-breadcrumbs ol { gap: 16px; min-width: 0; }
+.case-breadcrumbs li { flex: none; }
+.case-breadcrumbs li:last-child { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.case-content { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); background: #f8f8f5; color: #1a1d21; border-top: 1px solid #dbdbd6; }
+.case-headline { padding: var(--case-pad-y) var(--case-right) var(--case-pad-y) var(--section-inset); }
+.case-copy { padding-top: var(--case-pad-y); border-left: 1px solid #dbdbd6; min-width: 0; }
+.case-intro { padding: 0 var(--case-right) var(--case-intro-bottom) var(--case-gutter); }
+.case-accordion { border-top: 1px solid #dbdbd6; }
+.case-detail { border-bottom: 1px solid #dbdbd6; }
+.case-detail summary { padding: var(--case-question-pad) var(--section-inset) var(--case-question-pad) var(--case-gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; list-style: none; cursor: pointer; }
+.case-detail summary::-webkit-details-marker { display: none; }
+.case-detail summary img { width: 32px; height: 32px; flex: none; }
+.case-minus, .case-detail[open] .case-plus { display: none; }
+.case-detail[open] .case-minus { display: block; }
+.case-answer { padding: 0 var(--section-inset) var(--case-question-pad) var(--case-gutter); }
+.case-answer p + p { margin-top: 1.4em; }
+.case-tags { gap: var(--case-gutter); padding: var(--case-gutter); flex-wrap: wrap; }
+.case-tags li { background: var(--brand); color: white; }
+.case-share { min-height: var(--case-share-height); padding: 16px var(--section-inset) 16px var(--case-gutter); border-top: 1px solid #dbdbd6; display: flex; align-items: center; flex-wrap: wrap; gap: 8px var(--case-gutter); position: relative; }
+.case-share > span:first-child { color: #6b7280; }
+.case-share a, .case-share button { display: inline-flex; align-items: center; gap: 8px; text-decoration: underline; background: none; color: inherit; padding: 0; font: inherit; }
+.case-share img { width: 18px; height: 18px; }
+.case-copy-status { position: absolute; bottom: 0; right: var(--section-inset); }
+.case-gallery { background: white; color: #1a1d21; padding-bottom: var(--case-photo-bottom); }
+.case-gallery-title { padding: var(--case-gallery-top) var(--section-inset) var(--case-gallery-bottom); border-top: 1px solid #dbdbd6; }
+.case-gallery-track { gap: var(--case-photo-gap); padding: 0 var(--section-inset) var(--case-photo-bottom); overflow-x: auto; scrollbar-width: none; }
+.case-photo { position: relative; flex: 0 0 var(--case-photo-size); width: var(--case-photo-size); height: var(--case-photo-size); overflow: hidden; border-radius: 12px; color: white; }
+.case-photo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(#0206232e, #0206230a 52%, #02062394); }
+.case-photo .case-caption { position: absolute; z-index: 1; bottom: 0; left: 0; right: 0; min-height: 56px; padding: 12px 16px; background: #0206231a; backdrop-filter: blur(20px); display: flex; align-items: center; }
+.case-gallery-scroll { margin-inline: var(--section-inset); height: 8px; display: flex; align-items: center; }
+.case-gallery-scroll input { width: 100%; accent-color: #1a1d21; height: 8px; cursor: pointer; }
+.case-cta { min-height: var(--case-cta-height); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 64px; position: relative; isolation: isolate; background: linear-gradient(var(--page) 50%,var(--brand) 118.46%); border-bottom: 1px solid var(--line); }
+.case-cta::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: url('../svg/case-dots.svg') left top / 1960px 1120px; mask-image: url('../svg/case-grid.svg'); mask-mode: luminance; mask-size: 100% 100%; }
+.case-cta p { margin-top: 12px; }
+.case-cta .button { width: 432px; max-width: calc(100% - 32px); }
+.case-related { padding-bottom: 40px; }
+.case-related > .section-heading { min-height: var(--case-related-top); height: auto; margin: 0; padding: 0 var(--section-inset); align-items: center; }
+.case-related-track { grid-template-columns: repeat(4,minmax(0,1fr)); gap: var(--case-gutter); padding: var(--case-related-gap) var(--section-inset) 0; }
+.case-related-track .project-card { height: var(--case-card-height); }
+.case-related-track .project-title { padding: 24px 40px 20px 16px; }
+.case-related-track .project-years { padding: 16px; }
+.case-related-track .project-bottom { min-height: 61px; }
+.case-related-track .project-arrow { width: 64px; }
+.case-related-track .project-caption-text { -webkit-line-clamp: 2; }
+.case-lightbox { margin: auto; width: min(1000px,calc(100vw - 32px)); max-height: 95dvh; padding: 16px; background: var(--page); color: white; border: 1px solid var(--line); }
+.case-lightbox::backdrop { background: #020623dd; }
+.case-lightbox > img { display: block; width: 100%; max-height: 78dvh; object-fit: contain; }
+.case-lightbox > button { display: block; margin: 0 0 12px auto; padding: 8px 12px; background: var(--brand); color: white; }
+.case-lightbox p { margin-top: 12px; }
+
+.heading.case-cta-title { font-size: var(--case-cta-title-size,48px); line-height: .9; }
+.body.case-cta-intro { font-size: var(--case-cta-intro-size,18px); font-weight: 400; line-height: 1.4; }
+
+.label.case-years { font-size: var(--case-years-size,14px); font-weight: 400; line-height: normal; }
+.label.case-tags-text { font-size: var(--case-tag-size,16px); line-height: normal; }
+.case-gallery-scroll input { appearance: none; background: transparent; margin: 0; }
+.case-gallery-scroll input::-webkit-slider-runnable-track { height: 8px; background: #dbdbd6; border-radius: 2px; }
+.case-gallery-scroll input::-webkit-slider-thumb { appearance: none; width: var(--gallery-thumb-size,75%); height: 6px; margin-top: 1px; border-radius: 4px; background: #1a1d21; }
+.case-gallery-scroll input::-moz-range-track { height: 8px; background: #dbdbd6; }
+.case-gallery-scroll input::-moz-range-thumb { width: var(--gallery-thumb-size,75%); height: 6px; border: 0; border-radius: 4px; background: #1a1d21; }
+.case-gallery-scroll input:disabled { opacity: 1; cursor: default; }
+
+.case-related-track .project-top { height: auto; min-height: 102px; }
+.case-related-track .project-title .heading { transform: none; }
+.case-related-track .project-years { width: 61px; gap: 8px; }
+.case-related-track .project-years span { height: 20px; }
+.case-related-track .project-bottom { height: 61px; }
