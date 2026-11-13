@@ -1,3 +1,8 @@
+AuthType Basic
+AuthName "Private zone"
+AuthUserFile /home/u39357/vn.hat-trick.ru/tmp/.htpasswd
+require valid-user
+
 # MetaTrest: keep the CMS home page while static previews remain available.
 DirectoryIndex index.php index.html
 
