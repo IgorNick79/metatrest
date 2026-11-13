@@ -304,6 +304,40 @@ body::after {
 a[href], button:enabled { cursor: pointer; }
 .button:not(:disabled):not([aria-disabled="true"]) { cursor: pointer; }
 
+/* UI Kit Button: Primary / Secondary, without scaling the control. */
+button, .button { cursor: pointer; }
+.button--primary, .button--secondary {
+  --button-line-hover: rgb(255 255 255 / 80%);
+  --button-disabled-opacity: .4;
+  color: #fff;
+}
+:is(.button--primary, .button--secondary) > :is(.button-text, .button-icon) {
+  border: 0;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.button--primary > :is(.button-text, .button-icon) { background: var(--accent); }
+.button--secondary > :is(.button-text, .button-icon) { background: transparent; box-shadow: inset 0 0 0 1px var(--line-overlay); }
+:is(.button--primary, .button--secondary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+:is(.button--primary, .button--secondary):is(:disabled, [aria-disabled="true"]) { opacity: var(--button-disabled-opacity); }
+@media (hover: hover) {
+  .button--primary:not(:disabled):not([aria-disabled="true"]):hover > :is(.button-text, .button-icon) {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--button-line-hover);
+  }
+  .button--secondary:not(:disabled):not([aria-disabled="true"]):hover > :is(.button-text, .button-icon) {
+    background: #fff;
+    color: var(--page);
+    box-shadow: none;
+  }
+  :is(.button--primary, .button--secondary):not(:disabled):not([aria-disabled="true"]):hover > .button-icon { transform: translateX(6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.button--primary, .button--secondary) > :is(.button-text, .button-icon) { transition: none; }
+}
+
 /* 9. Header */
 .site-header {
   position: absolute;
