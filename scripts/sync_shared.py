@@ -44,7 +44,7 @@ def synchronize():
             )
         blocks[name] = (pattern, block)
 
-    for path in (ROOT / "index.html", ROOT / "projects.html", ROOT / "services.html", ROOT / "project.html"):
+    for path in (ROOT / "index.html", ROOT / "projects.html", ROOT / "services.html", ROOT / "project.html", ROOT / "construction.html", ROOT / "service.html", ROOT / "warehouse.html"):
         original = path.read_text(encoding="utf-8-sig")
         updated = original
         for name, (pattern, block) in blocks.items():

@@ -202,7 +202,7 @@ document.querySelector('.request-form')?.addEventListener('submit', event => {
   event.preventDefault();
 });
 
-// Mouse dragging for the objects strip only; native touch/wheel scrolling stays intact.
+// A horizontal mouse gesture triggers one animated card transition.
 if (buildTrack) {
   let drag = null;
   let suppressClickUntil = 0;
@@ -217,15 +217,23 @@ if (buildTrack) {
     if (!(event.buttons & 1)) { finishDrag(); return; }
     const dx = event.clientX - drag.x;
     if (!drag.active) {
-      if (Math.abs(dx) < 7 || Math.abs(dx) < Math.abs(event.clientY - drag.y)) return;
+      if (Math.abs(dx) < 24 || Math.abs(dx) < Math.abs(event.clientY - drag.y)) return;
       drag.active = true;
+      const cards = [...buildTrack.children];
+      const origin = cards[0].getBoundingClientRect().left;
+      const limit = Math.max(0, buildTrack.scrollWidth - buildTrack.clientWidth);
+      const stops = [...new Set(cards.map(card => Math.min(limit, card.getBoundingClientRect().left - origin)))];
+      const target = dx < 0
+        ? stops.find(stop => stop > drag.left + 1) ?? limit
+        : [...stops].reverse().find(stop => stop < drag.left - 1) ?? 0;
+      buildTrack.scrollTo({ left: target, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
       buildTrack.setPointerCapture(drag.id);
       buildTrack.classList.add('is-mouse-dragging');
       const selection = getSelection();
       if (selection?.anchorNode && buildTrack.contains(selection.anchorNode)) selection.removeAllRanges();
     }
     event.preventDefault();
-    buildTrack.scrollLeft = drag.left - dx;
+    // Further movement in this gesture does not move the strip again.
   }, { passive: false });
   function finishDrag() {
     if (!drag) return;
@@ -299,4 +307,24 @@ if (casePage) {
       status.textContent = 'Ссылка скопирована';
     } catch { status.textContent = 'Скопируйте адрес из строки браузера'; }
   });
+}
+// Warehouse service rows: all visible on desktop, one expanded row on mobile.
+const warehouseWorks = document.querySelector('[data-warehouse-works]');
+if (warehouseWorks) {
+  const rows = [...warehouseWorks.querySelectorAll('.warehouse-work')];
+  let selected = rows[0];
+  const renderWarehouseWorks = () => {
+    for (const row of rows) {
+      const expanded = !mobileLayout.matches || row === selected;
+      row.querySelector('.warehouse-work-toggle').setAttribute('aria-expanded', String(expanded));
+      row.querySelector('.catalog-service-media').hidden = !expanded;
+      row.querySelector('.catalog-service-description').hidden = !expanded;
+    }
+  };
+  for (const row of rows) row.querySelector('.warehouse-work-toggle').addEventListener('click', () => {
+    selected = selected === row ? null : row;
+    renderWarehouseWorks();
+  });
+  mobileLayout.addEventListener('change', renderWarehouseWorks);
+  renderWarehouseWorks();
 }

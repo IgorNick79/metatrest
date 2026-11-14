@@ -401,3 +401,152 @@
 }
 
 @media (width <= 1024px) { .case-related-track .project-top { height: auto; min-height: 84px; } .case-related-track .project-years { width: 51px; } .case-related-track .project-years span { height: 12px; } }
+
+@media (width <= 1024px) {
+  .construction-page { --construction-section-height: 116px; --construction-section-bottom: 12px; }
+  .construction-heading .construction-eyebrow { display: none; }
+  .construction-card .catalog-service-photo { height: 280px; }
+  .construction-photo img { inset: 0; width: 100%; height: 100%; object-fit: cover; transform: none; }
+  .construction-list { padding-bottom: 32px; }
+  .construction-card + .construction-card { margin-top: 24px; }
+}
+/* Service detail, Figma «Металлоконструкции [375]»; wider mobile/tablet flows naturally. */
+@media (width <= 1024px) {
+  .service-page {
+    --size-page: 48px;
+    --service-cover-height: 798px;
+    --service-cover-pad: 24px;
+    --service-cover-gap: 16px;
+    --service-heading-size: 32px;
+    --service-item-size: 22px;
+    --service-copy-size: 16px;
+    --service-step-size: 20px;
+    --service-question-size: 20px;
+    --service-advantage-marker-size: 32px;
+    --service-product-icon: 149px;
+    --service-product-pad: 24px;
+    --service-text-pair-gap: 8px;
+    --service-stage-pad: 24px;
+    --service-number-gap: 24px;
+    --service-copy-gap: 12px;
+    --service-faq-icon: 20px;
+    --service-faq-pad: 20px;
+  }
+  .service-cover { height: auto; padding-top: 412px; border-bottom: 0; box-shadow: inset 0 -1px var(--line); }
+  .service-cover-photo { top: 0; right: 0; height: 540px; }
+  .service-cover-photo img { width: 329.14%; max-width: none; height: 100%; position: absolute; left: -84.17%; object-fit: fill; }
+  .service-cover-content { position: relative; min-height: 386px; box-shadow: inset 0 1px var(--line-overlay); padding: 24px 16px; }
+  .service-cover .display { white-space: normal; max-width: 100%; }
+  .service-cover .display wbr::after { content: ''; }
+  .service-title-hyphen { display: inline; }
+  .service-cover .display wbr { display: block; }
+  .service-cover-intro { max-width: none; }
+  .service-cover-actions { width: 100%; flex-direction: column; gap: 12px; padding-top: 8px; }
+  .service-cover-actions .button { --button-size: 52px; width: 100%; }
+  .service-request-full { display: none; }
+  .service-request-short { display: inline; }
+  .service-breadcrumbs { min-height: 48px; }
+  .service-breadcrumbs li:not(:nth-child(3)) { display: none; }
+  .service-breadcrumbs li:nth-child(3)::before { content: '‹'; display: inline-block; margin-right: 8px; color: var(--footer-muted); }
+  .service-section-heading { min-height: 116px; padding: 80px 16px 12px; }
+  .service-production-grid { display: block; min-height: 0; }
+  .service-production-lead { padding: 24px 16px 48px; }
+  .service-copy-break { display: none; }
+  .service-products { border-left: 0; }
+  .service-product { min-height: 188px; }
+  .service-product-copy .heading { overflow-wrap: anywhere; }
+  .service-projects > .service-section-heading { display: contents; }
+  .service-projects .service-section-heading > h2 { min-height: 116px; padding: 80px 16px 12px; border-bottom: 1px solid var(--line); grid-row: 1; }
+  .service-projects { padding-bottom: 0; }
+  .service-projects .projects-grid { grid-row: 2; }
+  .service-stages-intro { display: block; min-height: 0; }
+  .service-stages-intro > p { padding: 24px 16px 48px; }
+  .service-hatch { display: none; }
+  .service-stages-grid, .service-advantages-grid { display: flex; overflow-x: auto; padding-inline: 16px; gap: 24px; scrollbar-width: none; }
+  .service-stage { flex: 0 0 256px; flex-direction: column; min-height: 426px; padding: 24px 24px 24px 0; gap: 24px; }
+  .service-stage-art { order: -1; width: 120px; height: 144px; margin-inline: 12px; }
+  .service-stage-copy { flex: 0; gap: 24px; }
+  .service-advantage { flex: 0 0 256px; min-height: 270px; padding: 24px 24px 24px 0; gap: 24px; border-right: 1px solid var(--line-overlay); }
+  .service-advantage + .service-advantage { border-left: 0; }
+  .service-faq { display: grid; grid-template-columns: minmax(0,1fr); }
+  .service-faq > .service-section-heading { display: contents; }
+  .service-faq h2 { min-height: 116px; padding: 80px 16px 12px; border-bottom: 1px solid var(--line); }
+  .service-faq .section-link { grid-row: 3; margin: 0; padding: 40px 16px 12px; }
+  .service-questions { grid-row: 2; }
+  .service-question { padding: 20px 16px; gap: 16px; }
+  .service-cta { min-height: 448px; align-items: start; text-align: left; gap: 40px; padding: 80px 16px; }
+  .service-cta .button { --button-size: 52px; }
+  .service-cta::before { background-size: 980px 560px; mask-image: none; }
+}
+/* Construction detail: «Склады и логистические комплексы [375]». */
+@media (width <= 1024px) {
+  .warehouse-page {
+    --warehouse-lead-size: 18px; --warehouse-meta-size: 16px;
+    --warehouse-faq-answer-size: 18px;
+    --process-height: 196px;
+    --case-gutter: 12px; --case-card-size: 28px; --case-years-size: 12px;
+  }
+  .warehouse-page .service-cover-content { min-height: 429px; }
+  .warehouse-page .service-section-heading { height: 116px; padding-top: 0; }
+  .warehouse-page .service-cover-photo { top: 0; height: 540px; }
+  .warehouse-page .service-cover-photo img { width: 258.02%; left: -29.14%; }
+  .warehouse-page .service-cover .display { overflow-wrap: normal; }
+  .warehouse-context-grid { display: flex; flex-direction: column; min-height: 0; overflow: visible; }
+  .warehouse-context-intro { order: -1; padding: 24px 16px 48px; gap: 16px; background: none; }
+  .warehouse-context-intro::after, .warehouse-factors::after { display: none; }
+  .warehouse-desktop-break { display: none; }
+  .warehouse-diagram { height: 384px; flex: none; }
+  .warehouse-diagram img { position: static; width: 375px; height: 384px; }
+  .warehouse-factors { display: flex; overflow-x: auto; gap: 24px; padding-inline: 16px; border-top: 1px solid var(--line); background: none; scrollbar-width: none; }
+  .warehouse-factors li { flex: 0 0 256px; min-height: 248px; padding: 24px 24px 24px 0; border: 0; border-right: 1px solid var(--line-overlay); }
+  .warehouse-factors li:nth-child(odd) { border-right: 1px solid var(--line-overlay); }
+  .warehouse-square { margin-block: 10px 26px; }
+  .warehouse-factors .body { margin-top: 12px; }
+  .warehouse-works, .warehouse-case { display: grid; grid-template-columns: minmax(0,1fr); }
+  .warehouse-works > .service-section-heading, .warehouse-case > .service-section-heading { display: contents; }
+  .warehouse-works h2, .warehouse-case h2 { grid-row: 1; min-height: 116px; padding: 0 16px 12px; display: flex; align-items: end; border-bottom: 1px solid var(--line); }
+  .warehouse-works > [data-warehouse-works], .warehouse-case-banner { grid-row: 2; }
+  .warehouse-page .warehouse-works .section-link, .warehouse-page .warehouse-case .section-link { margin: 0; padding-top: 40px; min-height: 70px; }
+  .warehouse-work { display: flex; flex-direction: column; min-height: 0; }
+  .warehouse-work-toggle { display: flex; width: 100%; min-height: 72px; gap: 16px; padding: 16px; text-align: left; }
+  .warehouse-work-toggle .warehouse-work-index { color: var(--accent); flex: 0 0 24px; }
+  .warehouse-work-name { flex: 1; }
+  .warehouse-work-toggle[aria-expanded="true"] > .icon { transform: rotate(180deg); }
+  .warehouse-work .catalog-service-title { display: none; }
+  .warehouse-page .warehouse-work .catalog-service-description { order: 1; padding: 0 16px 32px; gap: 24px; border: 0; }
+  .warehouse-page .warehouse-work .catalog-service-media { order: 2; padding: 0; }
+  .warehouse-page .warehouse-work .catalog-service-photo { height: 280px; }
+  .warehouse-work .body.service-description { font-size: var(--size-body); font-weight: 500; line-height: 1.4; }
+  .warehouse-work .button { width: 100%; --button-size: 40px; }
+  .warehouse-work .button :is(.button-text,.button-icon) { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-overlay); }
+  .warehouse-work-photo-1 img { width: 170.67%; height: 100%; left: -34.13%; max-width: none; }
+  .warehouse-case-banner { display: block; min-height: 0; }
+  .warehouse-case-photo { height: 280px; }
+  .warehouse-case-photo img { top: 0; height: 100%; }
+  .warehouse-case-info { min-height: 434px; padding: 24px 16px 32px; gap: 24px; }
+  .warehouse-case-copy > .body { margin-top: 12px; }
+  .warehouse-case-meta { position: static; width: 100%; }
+  .warehouse-case-meta li { padding-block: 8px; gap: 8px; }
+  .warehouse-requirements { padding-bottom: 0; }
+  .warehouse-requirements-grid { display: grid; grid-template-columns: minmax(0,1fr); border: 0; }
+  .warehouse-requirements-intro { display: contents; }
+  .warehouse-requirements-intro > div { padding: 24px 16px 48px; }
+  .warehouse-requirements-intro .button { order: 3; margin: 24px 16px 32px; width: calc(100% - 32px); --button-size: 40px; }
+  .warehouse-requirements-intro p { margin-top: 16px; }
+  .warehouse-requirements-list { display: flex; overflow-x: auto; padding-inline: 16px; gap: 24px; border: 0; scrollbar-width: none; }
+  .warehouse-requirements-list li { flex: 0 0 256px; min-height: 166px; display: flex; flex-direction: column; align-items: start; gap: 16px; padding: 24px 24px 24px 0; border: 0; border-right: 1px solid var(--line-overlay); }
+  .warehouse-requirements-list li + li { border-top: 0; }
+  .warehouse-requirement-index { flex: none; }
+  .warehouse-requirements-list .body { margin-top: 12px; }
+  .warehouse-process .process-grid > li { min-height: 196px; }
+  .warehouse-process .process-note { min-height: 72px; padding-block: 16px; }
+  .warehouse-faq-item .service-question { min-height: 60px; }
+  .warehouse-faq-answer { padding-bottom: 20px; }
+  .warehouse-related { display: grid; grid-template-columns: minmax(0,1fr); padding: 0; }
+  .warehouse-related > .section-heading { display: contents; }
+  .warehouse-page .warehouse-faq h2 { min-height: 116px; padding-top: 0; display: flex; align-items: end; }
+  .warehouse-related h2 { min-height: 116px; padding: 0 16px 12px; display: flex; align-items: end; border-bottom: 1px solid var(--line); }
+  .warehouse-page .warehouse-related .section-link { grid-row: 3; position: static; display: flex; padding: 24px 16px 12px; margin-top: 16px; min-height: 54px; }
+  .warehouse-related .case-related-track { grid-row: 2; display: flex; overflow-x: auto; padding: 16px 16px 0; gap: 12px; scrollbar-width: none; }
+  .warehouse-related .project-card { flex: 0 0 300px; height: 420px; }
+}

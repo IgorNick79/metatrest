@@ -343,7 +343,7 @@ button, .button { cursor: pointer; }
 /* 9. Header */
 .site-header {
   position: fixed;
-  width: min(100%, 1920px);
+  width: calc(min(100%, 1920px) - 2 * var(--gutter));
   margin-inline: auto;
   z-index: 2;
   inset: 0 0 auto;
@@ -1087,3 +1087,170 @@ button, .button { cursor: pointer; }
   .home-page .project-card:hover .project-photo,
   .home-page .build-card:hover .build-card-media img { transform: scale(1.03); }
 }
+
+/* Construction catalogue — Figma 1920. Shared Service and Process components. */
+.construction-page { --construction-section-height: 240px; --construction-section-bottom: 24px; }
+.construction-heading { gap: 8px; }
+.label.construction-eyebrow { font-size: var(--size-ui); line-height: normal; text-transform: uppercase; }
+.construction-section-title { height: var(--construction-section-height); padding: 0 var(--section-inset) var(--construction-section-bottom); display: flex; align-items: end; border-bottom: 1px solid var(--line); }
+.construction-photo img { position: absolute; max-width: none; }
+.construction-photo-1 img { width: 111.4%; height: 106.8%; left: -11.4%; top: .13%; }
+.construction-photo-2 img { width: 116.79%; height: 112.9%; left: -16.78%; top: .02%; transform: scaleX(-1); }
+.construction-photo-3 img { width: 114%; height: 110.42%; left: -8.34%; top: -3.04%; transform: scaleX(-1); }
+.construction-photo-4 img, .construction-photo-5 img, .construction-photo-6 img, .construction-photo-7 img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 23. Service detail — shared service layout, Figma «Металлоконструкции». */
+.service-page {
+  --size-page: 154px;
+  --service-cover-height: 900px;
+  --service-cover-panel: 379px;
+  --service-cover-pad: 40px;
+  --service-cover-gap: 24px;
+  --service-cover-image-height: 723px;
+  --service-crumb-height: 54px;
+  --service-heading-size: 48px;
+  --service-item-size: 28px;
+  --service-copy-size: 18px;
+  --service-production-height: 800px;
+  --service-product-icon: 164px;
+  --service-product-pad: 32px;
+  --service-text-pair-gap: 8px;
+  --service-stages-intro-height: 469px;
+  --service-stage-height: 325px;
+  --service-stage-pad: 40px;
+  --service-stage-gap: 32px;
+  --service-stage-art-width: 180px;
+  --service-stage-art-height: 220px;
+  --service-copy-gap: 16px;
+  --service-number-gap: 40px;
+  --service-advantage-height: 360px;
+  --service-faq-pad: 32px;
+  --service-faq-icon: 32px;
+  --case-cta-height: 460px;
+}
+/* Typography variants are centralized; components below only arrange content. */
+.heading.service-headline { font-size: var(--service-heading-size); line-height: 1; text-transform: uppercase; }
+.heading.service-item { font-size: var(--service-item-size); font-weight: 400; line-height: 1; }
+.data.service-step { font-size: var(--service-step-size,var(--service-item-size)); font-weight: 400; line-height: 1; }
+.service-advantage .data.service-step { font-size: var(--service-advantage-marker-size,var(--service-item-size)); }
+.service-question .heading.service-item { font-size: var(--service-question-size,var(--service-item-size)); }
+.body.service-copy { font-size: var(--service-copy-size); font-weight: 400; line-height: 1.4; }
+.heading.service-cta-title { font-size: var(--size-project); line-height: .9; }
+.service-cover { position: relative; height: var(--service-cover-height); overflow: hidden; border-bottom: 1px solid var(--line); }
+.service-cover-photo { position: absolute; top: -5%; left: 0; right: 2px; height: var(--service-cover-image-height); overflow: hidden; }
+.service-cover-photo img { width: 100%; height: 100%; object-fit: cover; }
+.service-cover-photo::after { content: ''; position: absolute; inset: 0; background: var(--overlay-tint); pointer-events: none; }
+.service-cover-content { position: absolute; isolation: isolate; bottom: 0; left: 0; right: 0; min-height: var(--service-cover-panel); display: flex; flex-direction: column; align-items: start; gap: var(--service-cover-gap); padding: var(--service-cover-pad) var(--section-inset); backdrop-filter: blur(var(--glass-blur)); background: linear-gradient(to top, #081789b3, #0817897d 11.058%, #02062312 58.654%); }
+.service-cover .display { white-space: nowrap; }
+.service-title-hyphen, .service-request-short { display: none; }
+.service-cover-intro { max-width: 860px; }
+.service-cover-actions { gap: var(--service-cover-gap); padding-top: 8px; }
+.service-breadcrumbs { min-height: var(--service-crumb-height); display: flex; align-items: center; padding: 0 var(--section-inset); border-bottom: 1px solid var(--line); color: var(--footer-muted); }
+.service-breadcrumbs ol { gap: 16px; }
+.service-breadcrumb-separator { color: var(--accent); }
+.service-section-heading { min-height: var(--section-title-height); padding: 0 var(--section-inset) var(--section-title-bottom); border-bottom: 1px solid var(--line); }
+.service-production-grid { grid-template-columns: repeat(2,minmax(0,1fr)); min-height: var(--service-production-height); border-bottom: 1px solid var(--line); }
+.service-production-lead { padding: 56px 22% 40px 39px; }
+.service-products { border-left: 1px solid var(--line-overlay); }
+.service-product { grid-template-columns: var(--service-product-icon) minmax(0,1fr); min-height: calc((var(--service-production-height) - 1px) / 4); }
+.service-product + .service-product { border-top: 1px solid var(--line); }
+.service-product-image { min-height: 0; position: relative; overflow: hidden; border-right: 1px solid var(--line); }
+.service-product-image img { position: absolute; inset: 0; }
+.service-product-copy { align-self: center; padding: var(--service-product-pad); }
+.service-product-copy .body { margin-top: var(--service-text-pair-gap); color: var(--footer-muted); }
+.service-projects { padding-bottom: 40px; }
+.service-stages-intro { grid-template-columns: repeat(2,minmax(0,1fr)); min-height: var(--service-stages-intro-height); border-bottom: 1px solid var(--line-subtle); }
+.service-stages-intro > p { padding: var(--service-cover-pad) 20.4% var(--service-cover-pad) var(--section-inset); }
+.service-hatch { border-left: 1px solid var(--line-subtle); background: url('../img/service-metal/hatch.svg') center / auto 100%; }
+.service-stages { border-top: 1px solid var(--line); }
+.service-stages-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.service-stage { min-width: 0; min-height: var(--service-stage-height); padding: var(--service-stage-pad); gap: var(--service-stage-gap); border-right: 1px solid var(--line-subtle); border-bottom: 1px solid var(--line-subtle); }
+.service-stage-copy { min-width: 0; flex: 1; gap: var(--service-number-gap); }
+.service-step { color: var(--accent); }
+.service-stage .body, .service-advantage .body { color: var(--footer-muted); margin-top: var(--service-copy-gap); }
+.service-stage-art { position: relative; flex: none; width: var(--service-stage-art-width); height: var(--service-stage-art-height); overflow: hidden; }
+.service-stage-art img { position: absolute; max-width: none; }
+.service-stage-art-1 img { width: 352.93%; height: 244.65%; left: -14.04%; top: -17.9%; }
+.service-stage-art-2 img { width: 350.71%; height: 243.11%; left: -125.15%; top: -21.7%; }
+.service-stage-art-3 img { width: 313.87%; height: 116.77%; left: -7.8%; top: -6.77%; }
+.service-stage-art-4 img { width: 354.57%; height: 245.78%; left: -12.35%; top: -115.56%; }
+.service-stage-art-5 img { width: 313.87%; height: 116.77%; left: -106.69%; top: -6.77%; }
+.service-stage-art-6 img { width: 313.87%; height: 116.77%; left: -206.69%; top: -6.77%; }
+.service-advantages-grid { grid-template-columns: repeat(4,minmax(0,1fr)); background: linear-gradient(var(--page) 50%,var(--brand) 118.46%); box-shadow: inset 0 -1px var(--line-overlay); }
+.service-advantage { min-width: 0; min-height: var(--service-advantage-height); padding: var(--service-stage-pad); gap: var(--service-number-gap); }
+.service-advantage + .service-advantage { border-left: 1px solid var(--line-overlay); }
+.service-question { min-height: calc(var(--service-faq-pad) * 2 + var(--service-faq-icon)); padding: var(--service-faq-pad) var(--section-inset); gap: 24px; box-shadow: inset 0 -1px var(--line-subtle); }
+.service-question .icon { flex: none; width: var(--service-faq-icon); height: var(--service-faq-icon); }
+.service-cta { padding-inline: var(--section-inset); }
+.service-cta .body { color: var(--ink); }
+
+/* 24. Construction detail — Warehouses. Shared service/catalogue components above. */
+.warehouse-page {
+  --service-cover-height: 1040px; --service-cover-panel: 518px;
+  --warehouse-photo-height: 678px; --warehouse-photo-top: -55px;
+  --warehouse-scheme-height: 960px; --warehouse-context-intro: 340px;
+  --warehouse-factor-pad: 40px; --warehouse-factor-gap: 24px;
+  --warehouse-intro-pad: 32px; --warehouse-lead-size: 18px;
+  --warehouse-case-height: 640px; --warehouse-case-right: 192px;
+  --warehouse-meta-width: 433px; --warehouse-meta-size: 16px;
+  --warehouse-requirement-height: 140px; --warehouse-requirement-index: 20px;
+  --warehouse-requirement-pad: 32px; --warehouse-requirement-gap: 24px;
+  --warehouse-faq-answer-size: 18px;
+  --case-related-top: 240px; --case-related-gap: 32px; --case-gutter: 24px;
+  --case-card-height: 498px; --case-card-size: 32px; --case-years-size: 14px;
+}
+.body.warehouse-lead { font-size: var(--warehouse-lead-size); font-weight: 400; line-height: 1.4; }
+.body.warehouse-meta { font-size: var(--warehouse-meta-size); font-weight: 500; line-height: 1.4; }
+.data.warehouse-requirement-index { font-size: var(--warehouse-requirement-index); line-height: 1.4; font-weight: 400; }
+.heading.warehouse-work-name { font-size: var(--warehouse-work-name-size,20px); line-height: 1; }
+.data.warehouse-work-index { font-size: 18px; line-height: 1; font-weight: 400; }
+.warehouse-faq-answer.body { font-size: var(--warehouse-faq-answer-size); font-weight: 400; line-height: 1.4; }
+.warehouse-page .service-cover .display { white-space: normal; }
+.warehouse-page .service-cover-intro { max-width: none; }
+.warehouse-page .service-cover-photo { top: var(--warehouse-photo-top); height: var(--warehouse-photo-height); }
+.warehouse-context-grid { position: relative; isolation: isolate; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: var(--warehouse-context-intro) minmax(0,1fr); min-height: var(--warehouse-scheme-height); box-shadow: inset 0 -1px var(--line); overflow: hidden; }
+.warehouse-diagram { grid-column: 1; grid-row: 1 / 3; position: relative; overflow: hidden; }
+.warehouse-diagram img { position: absolute; top: 0; left: 0; width: 200%; height: 100%; max-width: none; }
+.warehouse-context-intro { grid-column: 2; grid-row: 1; min-width: 0; display: flex; flex-direction: column; justify-content: end; gap: var(--service-copy-gap); padding: var(--warehouse-intro-pad); background: var(--overlay-tint); }
+.warehouse-factors { grid-column: 2; grid-row: 2; grid-template-columns: repeat(2,minmax(0,1fr)); background: var(--overlay-tint); }
+.warehouse-context-intro, .warehouse-factors { position: relative; isolation: isolate; }
+.warehouse-factors li { min-width: 0; padding: var(--warehouse-factor-pad); border-top: 1px solid var(--line-overlay); }
+.warehouse-factors li:nth-child(odd) { border-right: 1px solid var(--line-overlay); }
+.warehouse-square { display: block; width: 8px; height: 8px; margin-block: 10px calc(var(--warehouse-factor-gap) + 10px); background: var(--accent); }
+.warehouse-factors .body { margin-top: var(--warehouse-factor-gap); color: var(--footer-muted); }
+.warehouse-work-toggle { display: none; }
+.warehouse-work-photo img { position: absolute; }
+.warehouse-work-photo-1 img { width: 131.5%; max-width: none; left: -16.34%; }
+.warehouse-work-photo-2 img, .warehouse-work-photo-3 img { object-position: bottom; }
+.warehouse-work-photo-4 img { width: 174.66%; max-width: none; left: -41.1%; }
+.warehouse-work .button-small { width: var(--catalog-button-width); --button-size: var(--catalog-button-height); }
+.warehouse-case-banner { grid-template-columns: repeat(2,minmax(0,1fr)); min-height: calc(var(--warehouse-case-height) + 1px); border-bottom: 1px solid var(--line); }
+.warehouse-case-photo { position: relative; overflow: hidden; }
+.warehouse-case-photo img { position: absolute; top: -23.75%; height: 123.75%; }
+.warehouse-case-photo::after { content: ''; position: absolute; inset: 0; background: rgb(2 6 35 / 12%); pointer-events: none; }
+.warehouse-case-info { min-width: 0; position: relative; justify-content: end; gap: 20px; padding: 24px var(--warehouse-case-right) 24px var(--case-gutter); }
+.warehouse-case-copy > .body { margin-top: 20px; }
+.warehouse-case-meta { position: absolute; top: 40px; right: var(--section-inset); width: min(var(--warehouse-meta-width),calc(100% - 48px)); }
+.warehouse-case-meta li { gap: 12px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.warehouse-case-meta li:first-child { border-top: 1px solid var(--line); }
+.warehouse-case-meta .icon { width: var(--project-meta-icon); height: var(--project-meta-icon); margin-top: 2px; }
+.warehouse-requirements-grid { grid-template-columns: repeat(2,minmax(0,1fr)); border-block: 1px solid var(--line); }
+.warehouse-requirements { padding-bottom: 2px; box-shadow: inset 0 -1px var(--line); }
+.warehouse-requirements-intro { min-width: 0; padding: 24px var(--section-inset); align-items: start; }
+.warehouse-requirements-intro h3 { max-width: 469px; }
+.warehouse-requirements-intro p { margin-top: 12px; }
+.warehouse-requirements-list { border-left: 1px solid var(--line); }
+.warehouse-requirements-list li { min-height: var(--warehouse-requirement-height); align-items: center; padding: var(--warehouse-requirement-pad) var(--section-inset); gap: var(--warehouse-requirement-gap); }
+.warehouse-requirements-list li + li { border-top: 1px solid var(--line); }
+.warehouse-requirement-index { flex: 0 0 40px; color: var(--accent); align-self: start; }
+.warehouse-requirements-list .body { margin-top: var(--service-text-pair-gap); color: var(--footer-muted); }
+.warehouse-process .process-grid { background: linear-gradient(var(--page) 50%,var(--brand) 118.46%); }
+.warehouse-process .process-grid .body { margin-top: var(--service-copy-gap); color: var(--footer-muted); }
+.warehouse-faq-item { box-shadow: inset 0 -1px var(--line-subtle); }
+.warehouse-faq-item summary { cursor: pointer; list-style: none; box-shadow: none; }
+.warehouse-faq-item summary::-webkit-details-marker { display: none; }
+.warehouse-faq-minus, .warehouse-faq-item[open] .warehouse-faq-plus { display: none; }
+.warehouse-faq-item[open] .warehouse-faq-minus { display: block; }
+.warehouse-faq-answer { color: var(--footer-muted); padding: 0 var(--section-inset) var(--service-faq-pad); }
+.warehouse-related { border-top: 1px solid var(--line); }
+.warehouse-related > .section-heading { align-items: end; padding-bottom: var(--section-title-bottom); border-bottom: 1px solid var(--line); }

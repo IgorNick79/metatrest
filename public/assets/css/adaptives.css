@@ -522,3 +522,124 @@
   }
 .case-related-track { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
+
+@media (1025px <= width < 1760px) { .construction-page { --construction-section-height: 200px; --construction-section-bottom: 20px; } }
+@media (1025px <= width < 1440px) { .construction-page { --construction-section-height: 160px; --construction-section-bottom: 16px; } }
+/* Service detail: the three desktop modes are measured in Figma. */
+@media (1024px < width < 1760px) {
+  .service-page {
+    --size-page: 128px;
+    --service-cover-height: 752px;
+    --service-cover-panel: 319px;
+    --service-cover-pad: 32px;
+    --service-cover-gap: 20px;
+    --service-cover-image-height: 627px;
+    --service-crumb-height: 44px;
+    --service-heading-size: 40px;
+    --service-item-size: 24px;
+    --service-copy-size: 16px;
+    --service-production-height: 672px;
+    --service-product-icon: 136px;
+    --service-product-pad: 24px;
+    --service-stages-intro-height: 392px;
+    --service-stage-height: 272px;
+    --service-stage-pad: 32px;
+    --service-stage-gap: 24px;
+    --service-stage-art-width: 152px;
+    --service-stage-art-height: 184px;
+    --service-copy-gap: 12px;
+    --service-number-gap: 32px;
+    --service-advantage-height: 304px;
+    --service-faq-pad: 24px;
+    --service-faq-icon: 24px;
+    --case-cta-height: 384px;
+  }
+  .service-projects { padding-bottom: 32px; }
+}
+@media (1024px < width < 1440px) {
+  .service-page {
+    --size-page: 100px;
+    --service-cover-height: 600px;
+    --service-cover-panel: 250px;
+    --service-cover-pad: 24px;
+    --service-cover-gap: 16px;
+    --service-cover-image-height: 528px;
+    --service-crumb-height: 41px;
+    --service-heading-size: 32px;
+    --service-item-size: 18px;
+    --service-copy-size: 12px;
+    --service-production-height: 544px;
+    --service-product-icon: 108px;
+    --service-product-pad: 20px;
+    --service-text-pair-gap: 4px;
+    --service-stages-intro-height: 312px;
+    --service-stage-height: 216px;
+    --service-stage-pad: 24px;
+    --service-stage-gap: 20px;
+    --service-stage-art-width: 120px;
+    --service-stage-art-height: 144px;
+    --service-number-gap: 24px;
+    --service-advantage-height: 240px;
+    --service-faq-pad: 20px;
+    --service-faq-icon: 24px;
+    --case-cta-height: 304px;
+  }
+  .service-cover-actions { padding-top: 4px; }
+  .service-projects { padding-bottom: 24px; }
+  .service-breadcrumbs ol { gap: 12px; }
+}
+/* Below the 1280 reference, preserve readable columns instead of shrinking type. */
+@media (1024px < width < 1280px) {
+  .service-page { --size-page: clamp(72px,7.8vw,100px); }
+  .service-stages-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .service-production-lead { padding-right: 12%; }
+  .service-copy-break { display: none; }
+}
+/* Construction detail: warehouses, Figma 1600 and 1280. */
+@media (1024px < width < 1760px) {
+  .warehouse-page {
+    --service-cover-height: 864px; --service-cover-panel: 434px;
+    --warehouse-photo-height: 564px; --warehouse-photo-top: -46px;
+    --warehouse-scheme-height: 800px; --warehouse-context-intro: 284px;
+    --warehouse-factor-pad: 32px; --warehouse-factor-gap: 20px;
+    --warehouse-intro-pad: 24px; --warehouse-lead-size: 16px;
+    --warehouse-case-height: 536px; --warehouse-case-right: 158px;
+    --warehouse-meta-width: 359px; --warehouse-meta-size: 14px;
+    --warehouse-requirement-height: 116px; --warehouse-requirement-index: 18px;
+    --warehouse-requirement-pad: 24px; --warehouse-requirement-gap: 20px;
+    --warehouse-faq-answer-size: 16px; --process-height: 304px;
+    --case-related-top: 200px; --case-related-gap: 24px; --case-gutter: 20px;
+    --case-card-height: 416px; --case-card-size: 28px; --case-years-size: 12px;
+  }
+  .warehouse-related { padding-bottom: 32px; }
+}
+@media (1024px < width < 1440px) {
+  .warehouse-page {
+    --service-cover-height: 696px; --service-cover-panel: 340px;
+    --warehouse-photo-height: 452px; --warehouse-photo-top: -36px;
+    --warehouse-scheme-height: 640px; --warehouse-context-intro: 228px;
+    --warehouse-factor-pad: 24px; --warehouse-factor-gap: 16px;
+    --warehouse-intro-pad: 20px; --warehouse-lead-size: 12px;
+    --warehouse-case-height: 424px; --warehouse-case-right: 126px;
+    --warehouse-meta-width: 285px; --warehouse-meta-size: 12px;
+    --warehouse-requirement-height: 92px; --warehouse-requirement-index: 16px;
+    --warehouse-requirement-pad: 20px; --warehouse-requirement-gap: 16px;
+    --warehouse-faq-answer-size: 14px;
+    --process-height: 240px;
+    --case-related-top: 160px; --case-related-gap: 16px; --case-gutter: 16px;
+    --case-card-height: 340px; --case-card-size: 24px; --case-years-size: 10px;
+  }
+  .warehouse-related { padding-bottom: 24px; }
+  .warehouse-case-info { padding-block: 16px; }
+  .warehouse-case-meta { top: 24px; }
+  .warehouse-case-meta li { padding-block: 8px; }
+}
+@media (1024px < width < 1280px) {
+  .warehouse-page { --warehouse-case-right: 32px; }
+  .warehouse-factors { grid-template-columns: minmax(0,1fr); }
+  .warehouse-factors li { padding: 20px; }
+  .warehouse-factors li:nth-child(odd) { border-right: 0; }
+  .warehouse-square { float: left; margin: 5px 12px 0 0; }
+  .warehouse-case-meta { position: static; order: -1; width: 100%; margin-bottom: auto; }
+  .warehouse-case-info { padding-top: 20px; }
+}

@@ -50,5 +50,5 @@
 <symbol xmlns="http://www.w3.org/2000/svg" id="mobile-plus" viewBox="0 0 16 16" fill="none"><g transform="translate(7 3)"><path d="M1 0V10" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
 </g><g transform="translate(3 7)"><path d="M0 1H10" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
 </g></symbol>
-</svg>
+<symbol id="accordion-plus" viewBox="0 0 32 32"><path d="M5.33333 16H26.6667M16 5.33333V26.6667" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="accordion-minus" viewBox="0 0 32 32"><path d="M5.33333 16H26.6667" stroke-width="2" stroke="currentColor" fill="none"/></symbol></svg>
 
