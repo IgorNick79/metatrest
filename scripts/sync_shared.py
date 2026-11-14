@@ -19,6 +19,8 @@ SOURCES = {
     "footer": "index.html",
     "mobile-menu": "index.html",
     "request": "projects.html",
+    "request-form": "projects.html",
+    "estimate-popup": "index.html",
 }
 
 
@@ -44,7 +46,7 @@ def synchronize():
             )
         blocks[name] = (pattern, block)
 
-    for path in (ROOT / "index.html", ROOT / "projects.html", ROOT / "services.html", ROOT / "project.html", ROOT / "construction.html", ROOT / "service.html", ROOT / "warehouse.html"):
+    for path in (ROOT / "index.html", ROOT / "projects.html", ROOT / "services.html", ROOT / "project.html", ROOT / "construction.html", ROOT / "service.html", ROOT / "warehouse.html", ROOT / "contacts.html", ROOT / "tenders.html"):
         original = path.read_text(encoding="utf-8-sig")
         updated = original
         for name, (pattern, block) in blocks.items():
@@ -52,6 +54,8 @@ def synchronize():
                 if len(pattern.findall(updated)) != 1:
                     raise ValueError(f"Duplicate shared {name} block in {path.name}")
                 updated = pattern.sub(lambda match: block, updated)
+        if "<!-- shared:estimate-popup -->" not in updated:
+            updated = updated.replace("</body>", blocks["estimate-popup"][1] + "\n</body>")
         if updated != original:
             path.write_text(updated, encoding="utf-8")
             print(f"Updated {path.name}")

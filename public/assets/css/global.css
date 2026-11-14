@@ -306,18 +306,18 @@ body::after {
 a[href], button:enabled { cursor: pointer; }
 .button:not(:disabled):not([aria-disabled="true"]) { cursor: pointer; }
 
-/* UI Kit Button: Primary / Secondary, without scaling the control. */
+/* UI Kit buttons; filled hover follows Q-Industrial timing and split-arrow motion. */
 button, .button { cursor: pointer; }
 .button--primary, .button--secondary {
-  --button-line-hover: rgb(255 255 255 / 80%);
+  --button-line-hover: rgb(230 230 230 / 45%);
   --button-disabled-opacity: .4;
   color: #fff;
 }
 :is(.button--primary, .button--secondary) > :is(.button-text, .button-icon) {
   border: 0;
-  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition: background-color 350ms ease-out, border-color 350ms ease-out, color 350ms ease-out, box-shadow 350ms ease-out, transform 350ms ease-out;
 }
-.button--primary > :is(.button-text, .button-icon) { background: var(--accent); }
+.button--primary > :is(.button-text, .button-icon) { background: var(--accent); border: 1px solid var(--accent); }
 .button--secondary > :is(.button-text, .button-icon) { background: transparent; box-shadow: inset 0 0 0 1px var(--line-overlay); }
 :is(.button--primary, .button--secondary):focus-visible {
   outline: 2px solid var(--accent);
@@ -327,7 +327,7 @@ button, .button { cursor: pointer; }
 @media (hover: hover) {
   .button--primary:not(:disabled):not([aria-disabled="true"]):hover > :is(.button-text, .button-icon) {
     background: transparent;
-    box-shadow: inset 0 0 0 1px var(--button-line-hover);
+    border-color: var(--button-line-hover);
   }
   .button--secondary:not(:disabled):not([aria-disabled="true"]):hover > :is(.button-text, .button-icon) {
     background: #fff;
@@ -1254,3 +1254,125 @@ button, .button { cursor: pointer; }
 .warehouse-faq-answer { color: var(--footer-muted); padding: 0 var(--section-inset) var(--service-faq-pad); }
 .warehouse-related { border-top: 1px solid var(--line); }
 .warehouse-related > .section-heading { align-items: end; padding-bottom: var(--section-title-bottom); border-bottom: 1px solid var(--line); }
+
+/* 25. Contacts: shared page heading, request form and footer. */
+.contacts-page {
+  --contacts-panel-height: 960px; --contacts-intro-height: 340px;
+  --contacts-intro-pad: 32px; --contacts-tile-pad: 40px;
+  --contacts-tile-bottom: 48px; --contacts-gap: 24px;
+  --contacts-heading-size: 48px; --contacts-item-size: 28px;
+  --contacts-note-size: 18px; --contacts-value-size: 22px;
+  --contacts-social-size: 16px; --contacts-requisites-size: 20px;
+  --contacts-extra-height: 292px; --contacts-extra-gap: 20px;
+  --contacts-download-width: 330px;
+}
+/* Typography variants: dimensions are set through the page's reference tokens. */
+.heading.contacts-heading { font-size: var(--contacts-heading-size); line-height: 1; text-transform: uppercase; }
+.heading.contacts-item { font-size: var(--contacts-item-size); line-height: 1; }
+.body.contacts-note { font-size: var(--contacts-note-size); font-weight: 400; line-height: 1.4; }
+.body.contacts-value { font-size: var(--contacts-value-size); font-weight: 400; font-style: normal; line-height: 1.3; }
+.label.contacts-social { font-size: var(--contacts-social-size); letter-spacing: .06em; text-transform: uppercase; }
+.body.contacts-requisite-text { font-size: var(--contacts-requisites-size); font-weight: 400; line-height: 1.4; }
+.contacts-page-heading, .tenders-page-heading { background: linear-gradient(180deg,#194eb400 0%,#10317966 10.442%,#02062399 43.1%,var(--page) 50.957%); }
+.contacts-panel { position: relative; isolation: isolate; grid-template-columns: repeat(2,minmax(0,1fr)); height: var(--contacts-panel-height); overflow: hidden; box-shadow: inset 0 -1px var(--line); }
+.contacts-map { min-width: 0; position: relative; }
+.contacts-map-image { position: absolute; left: -42px; top: 0; width: 1050px; height: 100%; object-fit: cover; max-width: none; }
+.contacts-map-pin { position: absolute; left: 394px; top: 580px; width: 64px; height: 80px; }
+.contacts-pin-shape { position: absolute; left: 0; top: 0; }
+.contacts-pin-mark { position: absolute; left: 15px; top: 17.98px; width: 34px; height: 24.049px; overflow: hidden; }
+.contacts-pin-mark > span { display: block; position: absolute; left: .08%; right: -.1%; top: 0; bottom: -16.36%; mask-image: url('../img/contacts/pin-mask.svg'); mask-size: 34px 24.049px; mask-repeat: no-repeat; mask-position: -.026px 0; }
+.contacts-pin-shadow { position: absolute; left: -9px; top: 55px; }
+.contacts-details { position: relative; min-width: 0; isolation: isolate; display: grid; grid-template-rows: var(--contacts-intro-height) minmax(0,1fr); background: var(--glass); backdrop-filter: blur(var(--glass-blur)); border-left: 1px solid var(--line-overlay); }
+.contacts-intro { display: flex; flex-direction: column; justify-content: end; gap: var(--service-copy-gap,16px); padding: var(--contacts-intro-pad); }
+.contacts-intro .body { max-width: 840px; }
+.contacts-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.contacts-tile { min-width: 0; display: flex; flex-direction: column; gap: var(--contacts-gap); padding: var(--contacts-tile-pad) var(--contacts-tile-pad) var(--contacts-tile-bottom); border-top: 1px solid var(--line-overlay); }
+.contacts-tile:nth-child(odd) { border-right: 1px solid var(--line-overlay); }
+.contacts-marker { flex: none; width: 28px; height: 28px; position: relative; }
+.contacts-marker::before { content: ''; position: absolute; top: 9px; left: 0; width: 10px; height: 10px; background: var(--accent); }
+.contacts-value { margin-top: auto; overflow-wrap: anywhere; }
+.contacts-value a { display: block; }
+.contacts-extra { grid-template-columns: repeat(2,minmax(0,1fr)); min-height: var(--contacts-extra-height); border-bottom: 1px solid var(--line); }
+.contacts-messengers, .contacts-requisites { min-width: 0; padding: var(--contacts-tile-pad) var(--section-inset) var(--contacts-tile-bottom); }
+.contacts-requisites { border-left: 1px solid var(--line); }
+.contacts-messenger-list { margin-top: var(--contacts-gap); gap: var(--contacts-extra-gap); }
+.contacts-messenger-list li > span { gap: 8px; }
+.contacts-messenger-list .icon { width: var(--section-link-icon); height: var(--section-link-icon); }
+.contacts-requisite-text { color: var(--footer-muted); margin-top: var(--contacts-gap); }
+.contacts-download { margin-top: var(--contacts-extra-gap); width: max-content; min-width: min(var(--contacts-download-width),100%); max-width: 100%; }
+.contacts-request .request-intro-text { max-width: var(--request-intro-width); }
+
+/* 26. Tenders: shared buttons, fields and process cards. */
+.tenders-page {
+  --service-heading-size: 48px; --service-item-size: 28px; --service-copy-size: 18px;
+  --tender-lead-size: 20px; --tender-number-size: 20px;
+  --tender-intro-top: 64px; --tender-intro-gap: 32px;
+  --tender-intro-width: 720px; --tender-action-height: 140px;
+  --tender-action-pad: 32px; --tender-action-gap: 24px;
+  --tender-copy-gap: 8px; --tender-button-width: 262px;
+  --tender-process-gap: 40px; --tender-process-copy-gap: 16px;
+  --tender-request-height: 841px;
+}
+.body.tender-lead { font-size: var(--tender-lead-size); font-weight: 400; line-height: 1.4; }
+.data.tender-action-number { font-size: var(--tender-number-size); font-weight: 400; line-height: 1.4; }
+.tender-invite { grid-template-columns: repeat(2,minmax(0,1fr)); border-bottom: 1px solid var(--line); }
+.tender-invite-intro { padding: var(--tender-intro-top) var(--section-inset); border-right: 1px solid var(--line); }
+.tender-invite-intro .body { margin-top: var(--tender-intro-gap); max-width: var(--tender-intro-width); }
+.tender-action { grid-template-columns: minmax(0,1fr) auto; align-items: center; min-height: var(--tender-action-height); gap: var(--tender-action-gap); padding: var(--tender-action-pad) var(--section-inset); }
+.tender-action + .tender-action { box-shadow: inset 0 1px var(--line); }
+.tender-action-copy { grid-template-columns: 40px minmax(0,1fr); gap: var(--tender-action-gap); align-items: baseline; }
+.tender-action-copy > div { min-width: 0; }
+.tender-action-number { color: var(--accent); }
+.tender-action-copy .body { margin-top: var(--tender-copy-gap); color: var(--footer-muted); }
+.tender-action > .button { width: max-content; min-width: var(--tender-button-width); max-width: 100%; }
+.tender-process .process-grid { background: linear-gradient(var(--page) 50%,var(--brand) 118.46%); }
+.tender-process .process-number { font-size: var(--service-item-size); margin-bottom: var(--tender-process-gap); }
+.tender-process .process-grid .body { margin-top: var(--tender-process-copy-gap); color: var(--footer-muted); }
+.tender-request-section { background: linear-gradient(var(--page) 50%,var(--brand) 118.46%); }
+.tender-request { margin-inline: 0; min-height: var(--tender-request-height); background: none; }
+.tender-request .request-intro h3 { max-width: 760px; }
+.tender-form .request-upload { text-align: center; }
+.tender-form .file-hint { max-width: 100%; }
+
+/* 27. Shared estimate dialog — isolated form tokens preserve page forms. */
+.estimate-popup {
+  --estimate-width: 880px; --estimate-height: 904px; --estimate-header-height: 142px;
+  --estimate-title-size: 48px; --estimate-note-size: 18px; --estimate-upload-size: 20px;
+  --estimate-close-size: 44px; --estimate-inset: 56px; --estimate-head-end: 32px;
+  --estimate-head-pad: 32px; --estimate-head-gap: 4px; --estimate-top: 40px; --estimate-bottom: 48px;
+  --estimate-backdrop: rgb(2 6 35 / 70%);
+  --request-field-size: 20px; --request-label-size: 14px; --request-hint-size: 14px;
+  --request-consent-size: 16px; --request-checkbox-size: 18px;
+  --request-field-height: 80px; --request-field-gap: 16px; --request-column-gap: 40px;
+  --request-field-pad-top: 16px; --request-field-pad-bottom: 11px;
+  --request-upload-height: 130px; --request-group-gap: 40px;
+  --hero-button-size: 48px; --size-button-lg: 18px; --panel-gap: 24px;
+  position: fixed; inset: 0; margin: auto; padding: 0;
+  width: min(var(--estimate-width),calc(100% - 32px)); max-width: none;
+  height: var(--estimate-height); max-height: calc(100dvh - 32px);
+  border: 1px solid var(--line-overlay); color: var(--ink);
+  background: linear-gradient(var(--page) 50%,var(--brand) 118.46%);
+  overflow: hidden; grid-template-rows: auto minmax(0,1fr);
+}
+.estimate-popup[open] { display: grid; }
+.estimate-popup::backdrop { background: url('../svg/estimate/backdrop-1920.svg') center / 100% 100% no-repeat var(--estimate-backdrop); }
+.estimate-open { overflow: hidden; }
+.heading.estimate-title { font-size: var(--estimate-title-size); line-height: 1; text-transform: uppercase; }
+.body.estimate-description { font-size: var(--estimate-note-size); font-weight: 400; line-height: 1.4; }
+.body.estimate-upload-title { font-size: var(--estimate-upload-size); font-weight: 400; line-height: 1.4; }
+.body.estimate-form-status { font-size: var(--request-hint-size); font-weight: 400; line-height: 1.4; }
+.estimate-popup-header { grid-template-columns: minmax(0,1fr) var(--estimate-close-size); min-height: var(--estimate-header-height); border-bottom: 1px solid var(--line); }
+.estimate-popup-intro { min-width: 0; padding: var(--estimate-head-pad) var(--estimate-head-end) var(--estimate-head-pad) var(--estimate-inset); }
+.estimate-popup-intro .body { margin-top: var(--estimate-head-gap); }
+.estimate-close-column { border-left: 1px solid var(--line); }
+.estimate-close { width: 100%; height: var(--estimate-close-size); display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+.estimate-close picture { display: grid; place-items: center; }
+.estimate-form { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--estimate-top) var(--estimate-inset) var(--estimate-bottom); gap: var(--request-group-gap); }
+.estimate-form > * { flex-shrink: 0; }
+.estimate-popup .estimate-mobile { display: none; }
+.estimate-form .request-fields { min-width: 0; }
+.estimate-form .request-upload { text-align: center; padding-inline: 16px; }
+.estimate-form .file-hint { max-width: 100%; }
+.estimate-file-name { overflow-wrap: anywhere; }
+.estimate-form .button { width: 100%; }
+.estimate-title:focus { outline: none; }

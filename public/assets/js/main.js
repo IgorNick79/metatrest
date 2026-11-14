@@ -143,7 +143,7 @@ if (menu && menuToggle) {
   }
   menuToggle.addEventListener('click', () => setMenuOpen(menu.hidden));
   menu.addEventListener('click', event => {
-    if (event.target.closest('a[href]')) setMenuOpen(false, false);
+    if (event.target.closest('a[href], [data-estimate-open]')) setMenuOpen(false, false);
   });
   document.addEventListener('keydown', event => {
     if (menu.hidden) return;
@@ -164,6 +164,77 @@ if (menu && menuToggle) {
   });
   mobileLayout.addEventListener('change', () => {
     if (!mobileLayout.matches) setMenuOpen(false, false);
+  });
+}
+
+// Escape closes the active popup; preserve each dialog's existing close cleanup.
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || event.isComposing) return;
+  const dialogs = [...document.querySelectorAll('dialog[open]')];
+  const activeDialog = document.activeElement?.closest('dialog[open]') || dialogs.at(-1);
+  if (!activeDialog) return;
+  event.preventDefault();
+  event.stopPropagation();
+  activeDialog.close();
+}, true);
+
+// Shared calculation dialog. Native showModal supplies modal focus containment/inertness.
+const estimatePopup = document.querySelector('#estimate-popup');
+if (estimatePopup) {
+  const estimateForm = estimatePopup.querySelector('form');
+  const estimateStatus = estimatePopup.querySelector('.estimate-form-status');
+  const attachment = estimateForm.elements.attachment;
+  const filename = estimatePopup.querySelector('.estimate-file-name');
+  let estimateOpener = null;
+  let backdropPress = false;
+  const syncEstimateFields = () => {
+    estimatePopup.querySelectorAll('[data-estimate-desktop]').forEach(field => { field.disabled = mobileLayout.matches; });
+    estimatePopup.querySelectorAll('[data-estimate-mobile]').forEach(field => { field.disabled = !mobileLayout.matches; });
+    estimatePopup.querySelector('[data-estimate-name]').placeholder = mobileLayout.matches ? 'Как к вам обращаться' : 'Фамилия, имя';
+  };
+  syncEstimateFields();
+  mobileLayout.addEventListener('change', syncEstimateFields);
+  document.addEventListener('click', event => {
+    const opener = event.target.closest('[data-estimate-open]');
+    if (!opener || estimatePopup.open) return;
+    event.preventDefault();
+    estimateOpener = opener;
+    estimateStatus.hidden = true;
+    estimateStatus.textContent = '';
+    estimatePopup.showModal();
+    document.documentElement.classList.add('estimate-open');
+    estimateForm.scrollTop = 0;
+    estimatePopup.querySelector('#estimate-title').focus({ preventScroll: true });
+  });
+  estimatePopup.querySelector('[data-estimate-close]').addEventListener('click', () => estimatePopup.close());
+  const outsideEstimate = event => {
+    const rect = estimatePopup.getBoundingClientRect();
+    return event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+  };
+  estimatePopup.addEventListener('pointerdown', event => { backdropPress = event.target === estimatePopup && outsideEstimate(event); });
+  estimatePopup.addEventListener('click', event => {
+    if (backdropPress && event.target === estimatePopup && outsideEstimate(event)) estimatePopup.close();
+    backdropPress = false;
+  });
+  estimatePopup.addEventListener('close', () => {
+    document.documentElement.classList.remove('estimate-open');
+    const target = estimateOpener?.getClientRects().length ? estimateOpener : document.querySelector('.header-menu-toggle');
+    target?.focus({ preventScroll: true });
+  });
+  attachment.addEventListener('change', () => {
+    const file = attachment.files[0];
+    const error = file && file.size > 20 * 1024 * 1024 ? 'Размер файла не должен превышать 20 МБ.'
+      : file && !/\.(pdf|docx?|xlsx?|zip)$/i.test(file.name) ? 'Выберите PDF, DOC, DOCX, XLS, XLSX или ZIP.' : '';
+    attachment.setCustomValidity(error);
+    filename.textContent = error || file?.name || '';
+    filename.hidden = !filename.textContent;
+    if (error) attachment.reportValidity();
+  });
+  estimateForm.addEventListener('submit', event => {
+    event.preventDefault();
+    estimateStatus.textContent = 'Отправка заявок пока не подключена.';
+    estimateStatus.hidden = false;
+    estimateStatus.scrollIntoView({ block: 'nearest' });
   });
 }
 

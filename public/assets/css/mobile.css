@@ -550,3 +550,80 @@
   .warehouse-related .case-related-track { grid-row: 2; display: flex; overflow-x: auto; padding: 16px 16px 0; gap: 12px; scrollbar-width: none; }
   .warehouse-related .project-card { flex: 0 0 300px; height: 420px; }
 }
+/* Contacts — Figma 375. Tablet widths reflow the same composition. */
+@media (width <= 1024px) {
+  .contacts-page {
+    --contacts-heading-size: 32px; --contacts-item-size: 22px;
+    --contacts-note-size: 18px; --contacts-value-size: 18px;
+    --contacts-social-size: 14px; --contacts-requisites-size: 16px;
+    --contacts-gap: 16px; --contacts-extra-gap: 12px;
+    --contacts-tile-pad: 24px; --contacts-tile-bottom: 32px;
+  }
+  .contacts-panel { height: auto; display: block; overflow: hidden; }
+  .contacts-map { height: 360px; }
+  .contacts-map-image { left: -14px; top: -236px; width: 525px; height: 855px; }
+  .contacts-map-pin { left: 160px; top: 140px; }
+  .contacts-details { display: block; border-left: 0; border-top: 1px solid var(--line-subtle); }
+  .contacts-intro { padding: 40px 16px 48px; gap: 16px; border-bottom: 1px solid var(--line-subtle); }
+  .contacts-grid { display: block; }
+  .contacts-tile { min-height: 161px; padding: 24px 16px 32px; border-top: 0; border-bottom: 1px solid var(--line-subtle); }
+  .contacts-tile:first-child { min-height: 184px; }
+  .contacts-tile:nth-child(odd) { border-right: 0; }
+  .contacts-tile.contacts-address { display: none; }
+  .contacts-extra { display: block; min-height: 0; }
+  .contacts-messengers, .contacts-requisites { padding: 24px 16px 32px; }
+  .contacts-messengers { min-height: 172px; border-bottom: 1px solid var(--line); }
+  .contacts-requisites { min-height: 212px; border-left: 0; }
+  .contacts-download { --button-size: 40px; --button-padding: 16px; width: 100%; }
+  .contacts-request .request-intro { margin-bottom: 40px; }
+  .contacts-request .request-intro-text { max-width: none; }
+}
+/* Tenders — Figma «Тендеры [375]». */
+@media (width <= 1024px) {
+  .tenders-page {
+    --service-heading-size: 32px; --service-item-size: 22px; --service-copy-size: 16px;
+    --tender-lead-size: 18px; --tender-number-size: 20px;
+    --tender-intro-top: 40px; --tender-intro-gap: 16px;
+    --tender-intro-width: 100%; --tender-process-gap: 24px;
+    --tender-process-copy-gap: 12px; --process-note-height: 98px;
+  }
+  .tender-invite { display: block; }
+  .tender-invite-intro { padding: 40px 16px 48px; border-right: 0; }
+  .tender-invite-intro br { display: none; }
+  .tender-action { display: flex; flex-direction: column; align-items: stretch; min-height: 260px; padding: 48px 16px; gap: 24px; box-shadow: inset 0 1px var(--line); }
+  .tender-action-copy { display: flex; flex-direction: column; align-items: start; gap: 24px; }
+  .data.tender-action-number { line-height: 1; }
+  .tender-action-copy .body { margin-top: 12px; }
+  .tender-action > .button { --button-size: 40px; --button-padding: 16px; width: 100%; }
+  .tender-process .process-grid > li { min-height: 236px; }
+  .tender-process .process-note { padding: 16px; }
+  .tender-request { min-height: 0; }
+  .tender-request .request-intro { margin-bottom: 40px; }
+  .tender-form .request-upload { height: auto; min-height: 104px; padding: 16px; }
+  .tender-form .request-upload .field { font-weight: 400; line-height: 1.4; }
+  .tender-request-section .service-section-heading { height: 116px; min-height: 116px; padding-top: 0; }
+}
+/* Estimate popup: full-screen card, header stays visible while the form scrolls. */
+@media (width <= 1024px) {
+  .estimate-popup {
+    --estimate-title-size: 32px; --estimate-note-size: 18px; --estimate-upload-size: 16px;
+    --estimate-header-height: 163px; --estimate-close-size: 56px;
+    --estimate-inset: 16px; --estimate-head-end: 16px; --estimate-head-pad: 20px;
+    --estimate-head-gap: 12px; --estimate-top: 24px; --estimate-bottom: 40px;
+    --request-field-size: 16px; --request-label-size: 12px; --request-hint-size: 13px;
+    --request-consent-size: 14px; --request-checkbox-size: 18px;
+    --request-field-height: 56px; --request-field-gap: 16px;
+    --request-field-pad-top: 8px; --request-field-pad-bottom: 8px;
+    --request-upload-height: 80px; --request-group-gap: 40px;
+    --hero-button-size: 52px; --size-button-lg: 16px;
+    width: 100%; height: 100dvh; max-height: none; margin: 0; border: 0;
+  }
+  .estimate-popup-header { border-color: var(--line); }
+  .estimate-popup-intro { padding-bottom: 24px; }
+  .estimate-popup .estimate-desktop { display: none; }
+  .estimate-popup .estimate-mobile { display: initial; }
+  .estimate-popup label.estimate-mobile { display: flex; }
+  .estimate-form .request-fields { grid-template-columns: minmax(0,1fr); }
+  .estimate-popup .request-field { justify-content: start; gap: 4px; border: 0; box-shadow: inset 0 -1px var(--line); }
+  .estimate-form .request-submit .button { --button-padding: 16px; }
+}

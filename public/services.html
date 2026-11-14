@@ -23,15 +23,15 @@
           <li><a href="construction.html">Строительство</a> <svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#chevron"></use></svg></li>
           <li><a href="services.html">Услуги</a> <svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#chevron"></use></svg></li>
           <li><a href="projects.html">Проекты</a></li>
-          <li>Тендеры</li>
+          <li><a href="tenders.html">Тендеры</a></li>
           <li><a href="index.html#about-title">О компании</a></li>
-          <li><a href="#footer-contacts">Контакты</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
         </ul>
       </nav>
-      <a class="button button--primary button-small label button-caption" href="projects.html#request-title">
+      <button class="button button--primary button-small label button-caption" type="button" data-estimate-open aria-haspopup="dialog" aria-controls="estimate-popup">
   <span class="button-text">Запросить расчёт</span>
   <span class="button-icon"><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#arrow-link-small"></use></svg></span>
-</a>
+</button>
       <button class="header-menu-toggle label menu" type="button" aria-expanded="false" aria-controls="mobile-menu"><span>Меню</span><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#mobile-menu"></use></svg></button>
     </div>
   </header>
@@ -66,15 +66,15 @@
         </ul>
       </details>
       <a class="mobile-menu-row heading service-name" href="projects.html">Проекты</a>
-      <span class="mobile-menu-row heading service-name">Тендеры</span>
+      <a class="mobile-menu-row heading service-name" href="tenders.html">Тендеры</a>
       <a class="mobile-menu-row heading service-name" href="index.html#about-title">О компании</a>
-      <a class="mobile-menu-row heading service-name" href="#footer-contacts">Контакты</a>
+      <a class="mobile-menu-row heading service-name" href="contacts.html">Контакты</a>
     </nav>
     <div class="mobile-menu-actions flex flex-column" data-menu-actions>
-            <a class="button button--primary label button-caption-lg" href="projects.html#request-title">
+            <button class="button button--primary label button-caption-lg" type="button" data-estimate-open aria-haspopup="dialog" aria-controls="estimate-popup">
   <span class="button-text">Запросить расчёт</span>
   <span class="button-icon"><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#arrow-link"></use></svg></span>
-</a>
+</button>
             <button class="button button--secondary label button-caption-lg" type="button">
   <span class="button-text">Скачать наши проекты <svg class="icon pdf-badge" aria-hidden="true"><use href="assets/svg/sprite.svg#pdf-badge"></use></svg></span>
   <span class="button-icon"><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#arrow-download"></use></svg></span>
@@ -199,7 +199,8 @@
     <h2 class="heading request" id="request-title">Обсудим ваш объект</h2>
     <p class="body request-intro-text">Прикрепите ТЗ, проект или ведомость объёмов — это поможет нам определить состав работ.</p>
   </div>
-  <form class="request-form flex flex-column" aria-label="Запрос расчёта">
+  <!-- shared:request-form -->
+<form class="request-form flex flex-column" aria-label="Запрос расчёта">
     <div class="request-fields grid">
       <label class="request-field flex flex-column"><span class="label field">Компания <span class="required">*</span></span><input class="body field" type="text" name="organization" autocomplete="organization" placeholder="Название организации" required></label>
       <label class="request-field flex flex-column"><span class="label field">Имя <span class="required">*</span></span><input class="body field" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required></label>
@@ -218,6 +219,7 @@
       <button class="button button-primary label button-caption-lg" type="button" disabled title="Отправка заявки ещё не подключена"><span class="button-text">Запросить расчёт</span><span class="button-icon"><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#arrow-link"></use></svg></span></button>
     </div>
   </form>
+<!-- /shared:request-form -->
 </section>
 <!-- /shared:request -->
   </main>
@@ -246,9 +248,9 @@
         <ul class="footer-links flex flex-column">
           <li class="flex"><span class="footer-index" aria-hidden="true">3.1</span><a href="index.html#about-title">О компании</a></li>
           <li class="flex"><span class="footer-index" aria-hidden="true">3.2</span><a href="projects.html">Проекты</a></li>
-          <li class="flex"><span class="footer-index" aria-hidden="true">3.3</span><span>Тендеры</span></li>
-          <li class="flex"><span class="footer-index" aria-hidden="true">3.4</span><a href="#footer-contacts">Контакты</a></li>
-          <li class="flex"><span class="footer-index" aria-hidden="true">3.5</span><span>Запросить расчёт</span></li>
+          <li class="flex"><span class="footer-index" aria-hidden="true">3.3</span><a href="tenders.html">Тендеры</a></li>
+          <li class="flex"><span class="footer-index" aria-hidden="true">3.4</span><a href="contacts.html">Контакты</a></li>
+          <li class="flex"><span class="footer-index" aria-hidden="true">3.5</span><button type="button" data-estimate-open aria-haspopup="dialog" aria-controls="estimate-popup">Запросить расчёт</button></li>
         </ul>
         <ul class="footer-links flex flex-column">
           <li class="flex"><span class="footer-index" aria-hidden="true">4.1</span><span>Политика конфиденциальности</span></li>
@@ -286,5 +288,24 @@
     <img class="footer-mark" src="assets/svg/footer-mark.svg" alt="">
   </footer>
   <!-- /shared:footer -->
+<!-- shared:estimate-popup -->
+<dialog class="estimate-popup" id="estimate-popup" aria-labelledby="estimate-title" aria-describedby="estimate-description">
+  <header class="estimate-popup-header grid"><div class="estimate-popup-intro"><h2 class="heading estimate-title" id="estimate-title" tabindex="-1">Запрос расчёта</h2><p class="body estimate-description" id="estimate-description">Прикрепите ТЗ, проект или ведомость объёмов — это поможет определить состав работ</p></div><div class="estimate-close-column"><button class="estimate-close" type="button" data-estimate-close aria-label="Закрыть запрос расчёта"><picture><source media="(max-width:1024px)" srcset="assets/svg/estimate/close-mobile.svg"><source media="(max-width:1439px)" srcset="assets/svg/estimate/close-compact.svg"><img src="assets/svg/estimate/close.svg" alt=""></picture></button></div></header>
+  <form class="estimate-form flex flex-column" aria-label="Запрос расчёта" enctype="multipart/form-data">
+    <div class="request-fields grid">
+      <label class="request-field flex flex-column"><span class="label field">Компания <span class="required">*</span></span><input class="body field" name="organization" autocomplete="organization" placeholder="Название организации" required></label>
+      <label class="request-field flex flex-column"><span class="label field"><span class="estimate-desktop">ФИО</span><span class="estimate-mobile">Имя</span> <span class="required">*</span></span><input class="body field" name="name" autocomplete="name" placeholder="Фамилия, имя" data-estimate-name required></label>
+      <label class="request-field flex flex-column"><span class="label field">Телефон <span class="required">*</span></span><input class="body field" type="tel" name="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>
+      <label class="request-field estimate-desktop flex flex-column"><span class="label field">Email <span class="required">*</span></span><input class="body field" type="email" name="email" autocomplete="email" placeholder="name@company.ru" data-estimate-desktop required></label>
+      <label class="request-field estimate-desktop flex flex-column"><span class="label field">Объект / адрес</span><input class="body field" name="object" placeholder="Наименование, город" data-estimate-desktop></label>
+      <label class="request-field estimate-mobile flex flex-column"><span class="label field">Тип объекта</span><span class="request-select-value flex align-center"><select class="body field" name="object" data-estimate-mobile disabled><option value="">Выберите</option></select><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#chevron"></use></svg></span></label>
+      <label class="request-field flex flex-column"><span class="label field">Вид работ</span><span class="request-select-value flex align-center"><select class="body field" name="work"><option value="">Склады и логистические комплексы</option><option>Металлоконструкции</option><option>Шпунтовые работы</option><option>Монолитные работы</option><option>Кровельные работы</option><option>Разработка КМД</option><option>Проектирование</option><option>Авторский контроль</option></select><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#chevron"></use></svg></span></label>
+      <label class="request-field request-field-wide flex flex-column"><span class="label field">Комментарий</span><input class="body field" name="comment" placeholder="Необязательно"></label>
+    </div>
+    <label class="request-upload flex flex-column align-center justify-center"><span class="body estimate-upload-title"><span class="estimate-desktop">Прикрепить файл</span><span class="estimate-mobile">Прикрепить ТЗ или проект</span></span><span class="body file-hint"><span class="estimate-desktop">ТЗ, проект, ведомость объёмов · </span>PDF, DOC, DOCX, XLS, XLSX, ZIP · до 20 МБ</span><input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.zip" aria-label="Прикрепить документацию"><span class="body file-hint estimate-file-name" aria-live="polite" hidden></span></label>
+    <div class="request-submit flex flex-column"><label class="request-consent flex"><input type="checkbox" name="consent" required><span class="body consent">Даю <span class="request-policy">согласие на обработку персональных данных</span> в соответствии с <span class="request-policy">Политикой конфиденциальности</span></span></label><button class="button button--primary label button-caption-lg" type="submit"><span class="button-text">Запросить расчёт</span><span class="button-icon"><svg class="icon" aria-hidden="true"><use href="assets/svg/sprite.svg#arrow-link"></use></svg></span></button><p class="body estimate-form-status" role="status" hidden></p></div>
+  </form>
+</dialog>
+<!-- /shared:estimate-popup -->
 </body>
 </html>

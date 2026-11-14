@@ -643,3 +643,96 @@
   .warehouse-case-meta { position: static; order: -1; width: 100%; margin-bottom: auto; }
   .warehouse-case-info { padding-top: 20px; }
 }
+/* Contacts — 1600 / 1280 reference frames. */
+@media (1024px < width < 1760px) {
+  .contacts-page {
+    --contacts-panel-height: 800px; --contacts-intro-height: 280px;
+    --contacts-intro-pad: 24px; --contacts-tile-pad: 32px;
+    --contacts-tile-bottom: 40px; --contacts-gap: 20px;
+    --contacts-heading-size: 40px; --contacts-item-size: 24px;
+    --contacts-note-size: 16px; --contacts-value-size: 20px;
+    --contacts-social-size: 14px; --contacts-requisites-size: 18px;
+    --contacts-extra-height: 255px; --contacts-extra-gap: 16px;
+  }
+  .contacts-intro { gap: 12px; }
+}
+@media (1024px < width < 1440px) {
+  .contacts-page {
+    --contacts-panel-height: 640px; --contacts-intro-height: 224px;
+    --contacts-intro-pad: 20px; --contacts-tile-pad: 24px;
+    --contacts-tile-bottom: 32px; --contacts-gap: 16px;
+    --contacts-heading-size: 32px; --contacts-item-size: 18px;
+    --contacts-note-size: 12px; --contacts-value-size: 18px;
+    --contacts-social-size: 11px; --contacts-requisites-size: 16px;
+    --contacts-extra-height: 204px; --contacts-extra-gap: 12px;
+  }
+}
+@media (1024px < width < 1280px) {
+  .contacts-page { --contacts-tile-pad: 20px; }
+  .contacts-grid { grid-template-columns: minmax(0,1fr); }
+  .contacts-panel { height: auto; min-height: var(--contacts-panel-height); }
+  .contacts-details { grid-template-rows: auto auto; }
+  .contacts-intro { min-height: var(--contacts-intro-height); }
+  .contacts-tile { display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 12px; padding-block: 20px; }
+  .contacts-tile:nth-child(odd) { border-right: 0; }
+  .contacts-tile .contacts-marker { grid-row: span 2; width: 18px; }
+  .contacts-tile .contacts-value { grid-column: 2; margin: 0; }
+}
+/* Tenders — confirmed 1600 and 1280 modes. */
+@media (1024px < width < 1760px) {
+  .tenders-page {
+    --service-heading-size: 40px; --service-item-size: 24px; --service-copy-size: 16px;
+    --tender-lead-size: 18px; --tender-number-size: 18px;
+    --tender-intro-top: 48px; --tender-intro-gap: 24px;
+    --tender-intro-width: 100%; --tender-action-height: 116px;
+    --tender-action-pad: 24px; --tender-action-gap: 20px;
+    --tender-process-gap: 32px; --tender-process-copy-gap: 12px;
+    --process-height: 304px; --tender-request-height: 685px;
+  }
+}
+@media (1024px < width < 1440px) {
+  .tenders-page {
+    --service-heading-size: 32px; --service-item-size: 18px; --service-copy-size: 12px;
+    --tender-lead-size: 16px; --tender-number-size: 16px;
+    --tender-intro-top: 40px; --tender-intro-gap: 20px;
+    --tender-action-height: 92px; --tender-action-pad: 20px;
+    --tender-action-gap: 16px; --tender-copy-gap: 4px;
+    --tender-process-gap: 24px; --process-height: 240px;
+    --tender-request-height: 538px;
+  }
+}
+@media (1024px < width < 1280px) {
+  .tender-action { grid-template-columns: minmax(0,1fr); }
+  .tender-action > .button { margin-left: 56px; }
+}
+/* Estimate dialog: Figma 1600 and 1280. */
+@media (1024px < width < 1760px) {
+  .estimate-popup {
+    --estimate-width: 730px; --estimate-height: 745px; --estimate-header-height: 115px;
+    --estimate-title-size: 40px; --estimate-note-size: 16px; --estimate-upload-size: 18px;
+    --estimate-close-size: 36px; --estimate-inset: 48px; --estimate-head-end: 24px;
+    --estimate-head-pad: 24px; --estimate-top: 32px; --estimate-bottom: 40px;
+    --estimate-backdrop: rgb(2 6 35 / 85%);
+    --request-field-size: 16px; --request-label-size: 12px;
+    --request-consent-size: 14px; --request-checkbox-size: 16px;
+    --request-field-height: 60px; --request-column-gap: 32px;
+    --request-field-pad-top: 12px; --request-field-pad-bottom: 8px;
+    --request-upload-height: 112px; --request-group-gap: 32px; --size-button-lg: 16px;
+  }
+  .estimate-popup::backdrop { background-image: url('../svg/estimate/backdrop-1600.svg'); }
+}
+@media (1024px < width < 1440px) {
+  .estimate-popup {
+    --estimate-width: 620px; --estimate-height: 591px; --estimate-header-height: 92px;
+    --estimate-title-size: 32px; --estimate-note-size: 12px; --estimate-upload-size: 16px;
+    --estimate-close-size: 32px; --estimate-inset: 40px; --estimate-head-end: 20px;
+    --estimate-head-pad: 20px; --estimate-head-gap: 2px; --estimate-top: 24px; --estimate-bottom: 32px;
+    --request-field-size: 14px; --request-label-size: 10px; --request-hint-size: 13px;
+    --request-consent-size: 12px; --request-field-height: 48px;
+    --request-field-gap: 12px; --request-column-gap: 28px;
+    --request-field-pad-top: 8px; --request-field-pad-bottom: 6px;
+    --request-upload-height: 88px; --request-group-gap: 24px;
+    --hero-button-size: 36px; --size-button-lg: 14px;
+  }
+  .estimate-popup::backdrop { background-image: url('../svg/estimate/backdrop-1280.svg'); }
+}

@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pin shape" clip-path="url(#clip0_0_475)">
+<path id="Vector" d="M32 80C32 80 2 50 2 30C2 22.0435 5.16071 14.4129 10.7868 8.7868C16.4129 3.16071 24.0435 4.47035e-07 32 4.47035e-07C39.9565 4.47035e-07 47.5871 3.16071 53.2132 8.7868C58.8393 14.4129 62 22.0435 62 30C62 50 32 80 32 80Z" fill="#E1541B"/>
+</g>
+<defs>
+<clipPath id="clip0_0_475">
+<rect width="64" height="80" fill="white"/>
+</clipPath>
+</defs>
+</svg>
