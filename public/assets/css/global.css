@@ -1,14 +1,14 @@
 /* 1. Local web fonts */
 @font-face {
   font-family: "TT Commons Classic Trl";
-  src: url("../fonts/TT_Commons_Classic_Trial_Regular.woff2") format("woff2");
+  src: url("../fonts/TT_Commons_Classic_Trial_Book.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "TT Commons Classic Trl";
-  src: url("../fonts/TT_Commons_Classic_Trial_Medium.woff2") format("woff2");
+  src: url("../fonts/TT_Commons_Classic_Trial_Regular.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
 }
@@ -39,7 +39,7 @@ button { padding: 0; border: 0; background: none; }
   --line-overlay: rgb(255 255 255 / 25%);
   --line-subtle: rgb(255 255 255 / 15%);
   --glass: rgb(2 6 35 / 56%);
-  --glass-blur: 60px;
+  --glass-blur: 30px;
   --brand: #081789;
   --overlay-tint: rgb(2 6 35 / 10%);
   --fill-muted-light: #dbdbd6;
@@ -256,6 +256,8 @@ body::after {
 .center { text-align: center; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+.glass:after { content:''; position:absolute; inset:0; z-index: -1; background-image: url('../img/grain-mono-sparse-35.webp'); background-size: 307px 307px;opacity: .13; pointer-events:none; }
+
 /* 6. Flex / Grid */
 .flex { display: flex; }
 .grid { display: grid; }
@@ -340,7 +342,9 @@ button, .button { cursor: pointer; }
 
 /* 9. Header */
 .site-header {
-  position: absolute;
+  position: fixed;
+  width: min(100%, 1920px);
+  margin-inline: auto;
   z-index: 2;
   inset: 0 0 auto;
   background: var(--glass);
@@ -360,8 +364,9 @@ button, .button { cursor: pointer; }
 .header-nav li { display: flex; align-items: center; gap: 8px; }
 .site-header .button {
   --size-button: var(--size-button-sm);
-  margin-left: calc(var(--header-action-gap) - var(--header-gap));
+  margin-left: 24px;
 }
+.header-nav .icon { opacity: .8; }
 
 /* 10. Hero */
 .hero-screen {
@@ -663,7 +668,6 @@ button, .button { cursor: pointer; }
   grid-template-columns: minmax(0, 1fr) var(--about-media-width) minmax(0, 1fr);
   min-height: var(--about-height);
   background: linear-gradient(to bottom, var(--page) 50%, var(--brand) 118.46%);
-  box-shadow: inset 0 -1px var(--line);
 }
 .about-copy {
   padding: var(--about-pad-y) var(--about-pad-right) var(--about-pad-y) var(--section-inset);
@@ -711,8 +715,9 @@ button, .button { cursor: pointer; }
   border-left: var(--hairline) solid var(--line-overlay);
 }
 .footer-up span { place-items: center; }
-.footer-up-icon { border-bottom: var(--hairline) solid var(--line-overlay); }
-.footer-up-icon .icon { width: var(--section-link-icon); height: var(--section-link-icon); transform: rotate(180deg); }
+.footer-up-icon { border-bottom: var(--hairline) solid var(--line-overlay); transition: background-color .3s ease; }
+.footer-up-icon .icon { width: var(--section-link-icon); height: var(--section-link-icon); transform: rotate(180deg); transition: color .3s ease; }
+.footer-up-icon:hover { background-color: var(--ink); color: var(--page); }
 .footer-bottom {
   /* Footer hugs its rows; the 375px bottom section is confirmed in all desktop frames. */
   min-height: calc(var(--footer-bottom-height) + var(--hairline));
